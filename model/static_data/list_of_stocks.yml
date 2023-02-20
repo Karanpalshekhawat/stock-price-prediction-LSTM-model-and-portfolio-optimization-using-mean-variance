@@ -1,0 +1,31 @@
+---
+- ticker: "SBIN.NS"
+  stock: State Bank of india
+- ticker: "RELIANCE.NS"
+  stock: Reliance Industries
+- ticker: "ITC.NS"
+  stock: ITC
+- ticker: "AXISBANK.NS"
+  stock: Axis Bank Ltd.
+- ticker: "BHARTIARTL.NS"
+  stock: Bharti Airtel Ltd.
+- ticker: "M&M.NS"
+  stock: Mahindra And Mahindra Ltd.
+- ticker: "SUNPHARMA.NS"
+  stock: Sun Pharmaceutical Industries Ltd.
+- ticker: "NTPC.NS"
+  stock: NTPC Ltd.
+- ticker: "JSWSTEEL.NS"
+  stock: JSW Steel Ltd.
+- ticker: "TECHM.NS"
+  stock: Tech Mahindra Ltd.
+- ticker: "ONGC.NS"
+  stock: Oil and Natural Gas Corporation Ltd.
+- ticker: "EICHERMOT.NS"
+  stock: Eicher Motors Ltd.
+- ticker: "TCS.NS"
+  stock: Tata Consultancy Services Ltd.
+- ticker: "ASIANPAINT.NS"
+  stock: Asian Paints Ltd.
+- ticker: "HINDUNILVR.NS"
+  stock: Hindustan Unilever Ltd.

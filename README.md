@@ -12,16 +12,20 @@ performance as per below:-
 
 |       **Stock Prediction ML model**        | 
 |:------------------------------------------:|
-| Linear regression using Elastic Net (LRET) | 
+| Linear regression using Elastic Net (LREN) | 
 |       Support Vector Regressor (SVR)       |
 |   Long-Short Term Memory Network (LSTM)    |
 
 </div>
+
+<div align="center">
 
 | **Portfolio Optimization Techniques** |
 |:-------------------------------------:|
 |          Equal Weights (EQ)           |
 |     Monte-carlo simulation (MCS)      |
 |   Mean-variance Optimization (MVO)    |
+
+</div>
 
 ---

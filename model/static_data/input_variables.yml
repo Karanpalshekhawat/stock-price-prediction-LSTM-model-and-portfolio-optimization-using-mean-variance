@@ -1,4 +1,0 @@
----
-- ticker : "^SPX"
-  opt_type : european
-  opt_kind : call
