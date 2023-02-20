@@ -1,0 +1,1 @@
+{"optimizer": "Adam", "neurons": 400, "initialization": "glorot_uniform", "drop_out_rate": 0.0, "batch_size": 1024, "batch_normalisation": "no", "activation": "relu"}

@@ -1,0 +1,9 @@
+{
+  "call_price_moneyness": [
+    0.0,
+    0.9
+  ],
+  "_comment": [
+    "call price is divided by strike in the model as it cannot be greater than 1"
+  ]
+}

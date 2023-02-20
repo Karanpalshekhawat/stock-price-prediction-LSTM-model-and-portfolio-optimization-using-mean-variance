@@ -1,0 +1,34 @@
+{
+  "activation": [
+    "relu",
+    "elu",
+    "sigmoid",
+    "tanh"
+  ],
+  "dropout_rate": [
+    0.0,
+    0.2
+  ],
+  "neurons": [
+    200,
+    600
+  ],
+  "initialization": [
+    "uniform",
+    "glorot_uniform",
+    "he_uniform"
+  ],
+  "batch_normalisation": [
+    "yes",
+    "no"
+  ],
+  "optimizer": [
+    "SGD",
+    "RMSprop",
+    "Adam"
+  ],
+  "batch_size": [
+    256,
+    2048
+  ]
+}

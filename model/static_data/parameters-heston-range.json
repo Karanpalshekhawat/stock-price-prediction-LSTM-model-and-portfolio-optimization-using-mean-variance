@@ -1,0 +1,34 @@
+{
+  "moneyness": [
+    0.6,
+    1.4
+  ],
+  "time_to_maturity": [
+    0.1,
+    1.4
+  ],
+  "risk_free_rate": [
+    0.01,
+    0.1
+  ],
+  "correlation": [
+    -0.95,
+    0
+  ],
+  "reversion_speed": [
+    0.0,
+    2
+  ],
+  "Long_average_variance": [
+    0.0,
+    0.5
+  ],
+  "vol_vol": [
+    0.0,
+    0.5
+  ],
+  "initial_variance": [
+    0.05,
+    0.5
+  ]
+}
