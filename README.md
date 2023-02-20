@@ -8,16 +8,20 @@ learning models and compare their performance on an actual period.
 I have implemented ML model and portfolio optimization techniques to analyze their impact on an actual
 performance as per below:-
 
-| **Stock Prediction ML model**                  | 
-|:-----------------------------------------------|
-| **Linear regression using Elastic Net (LRET)** | 
-| **Support Vector Regressor (SVR)**             |
-| **Long-Short Term Memory Network (LSTM)**      |
+<div align="center">
+
+|       **Stock Prediction ML model**        | 
+|:------------------------------------------:|
+| Linear regression using Elastic Net (LRET) | 
+|       Support Vector Regressor (SVR)       |
+|   Long-Short Term Memory Network (LSTM)    |
+
+</div>
 
 | **Portfolio Optimization Techniques** |
-|:--------------------------------------|
-| **Equal Weights (EQ)**                |
-| **Monte-carlo simulation (MCS)**      |
-| **Mean-variance Optimization (MVO)**  |
+|:-------------------------------------:|
+|          Equal Weights (EQ)           |
+|     Monte-carlo simulation (MCS)      |
+|   Mean-variance Optimization (MVO)    |
 
 ---
