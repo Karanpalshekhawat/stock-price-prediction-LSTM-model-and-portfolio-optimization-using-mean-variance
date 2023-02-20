@@ -56,12 +56,13 @@ version = version_module.VERSION
 
 install_requires = read_requirements('requirements.txt')
 long_description = read_utf8('README.md')
-short_description = "An approach to learn non linear relationship between option parameters and its price using /" \
-                    "Deep Neural Network"""
-url = 'https://github.com/Karanpalshekhawat/pricing-options-and-computing-implied-volatility-using-deep-neural-network'
+short_description = """An approach to build an quantitative alpha trading model to identify best performing stocks 
+and their corresponding ideal weights  using different machine learning models and compare performance on an actual 
+period"""
+url = 'https://github.com/Karanpalshekhawat/stock-predicition-and-portoflio-optimization-using-ML'
 
 setup(
-    name='option-price-using-NN',
+    name='stock-prediction-using-ML',
     version=version,
     description=short_description,
     long_description=long_description,
