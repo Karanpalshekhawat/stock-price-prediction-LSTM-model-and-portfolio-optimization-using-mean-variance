@@ -4,6 +4,7 @@ which uses penalties from both lasso and ridge
 regression to regularize regression models.
 """
 
+import joblib
 import numpy as np
 import pandas as pd
 
@@ -11,7 +12,7 @@ from sklearn.linear_model import ElasticNet
 from sklearn.model_selection import PredefinedSplit, GridSearchCV
 
 
-def elastic_net_model(features, target, features_val, target_val):
+def elastic_net_hyper_parameter_tuning(features, target, features_val, target_val):
     """
     build and fit the elastic net model and return
     model parameter
@@ -41,3 +42,26 @@ def elastic_net_model(features, target, features_val, target_val):
     clf.fit(X, y)
 
     return clf.best_params_
+
+
+def elastic_model(stock, features, target, alpha, l1_ratio):
+    """
+
+    Args:
+        stock (str): stock name
+        features (pd.DataFrame): lagged daily returns for a rolling window as feature
+        target (pd.DataFrame): next day return as target
+        alpha (float): lambda parameter
+        l1_ratio (float): ratio for individual penalty
+
+    Returns:
+        save the model for stock
+    """
+    model = ElasticNet(alpha=alpha, l1_ratio=l1_ratio)
+    model.fit(features, target)
+
+    # save the model
+    model_save_path = r"./model/output/ElasticNet/" + stock + ".pkl"
+    joblib.dump(model, model_save_path)
+
+    return
