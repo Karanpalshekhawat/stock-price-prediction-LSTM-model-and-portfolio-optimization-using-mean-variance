@@ -8,8 +8,11 @@ import joblib
 import numpy as np
 import pandas as pd
 
+from datetime import date, datetime, timedelta
 from sklearn.linear_model import ElasticNet
 from sklearn.model_selection import PredefinedSplit, GridSearchCV
+from model.utils.pre_processing import train_validation_test_split
+from model.utils.get_data import get_historical_stock_data
 
 
 def elastic_net_hyper_parameter_tuning(features, target, features_val, target_val):
@@ -65,3 +68,26 @@ def elastic_model(stock, features, target, alpha, l1_ratio):
     joblib.dump(model, model_save_path)
 
     return
+
+
+def run_elastic_net_model_for_all_stocks():
+    """
+    This method first reads all the stock tickers,
+    retrieve data, creates training set, hold out
+    validation set and testing in real world data.
+    Find the best hyperparameters for each stock and
+    then build and save model.
+
+    Returns:
+        save all the models
+    """
+    start_date = date(2016, 1, 1)
+    end_date = datetime.today()
+    data_dict = get_historical_stock_data(start_date, end_date)
+    # training data ends 2 years before while validation data starts after that and ends 1 year before
+    param = {'training_end': end_date - timedelta(seconds=2 * 365.2425 * 24 * 60 * 60),
+             'validation_end': end_date - timedelta(seconds=1 * 365.2425 * 24 * 60 * 60)}
+    # running for all stocks
+    for key, data in data_dict.items():
+        training, validation, test = train_validation_test_split(key, data, **param)
+

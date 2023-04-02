@@ -1,10 +1,11 @@
 """
 This module is the main file which call all
-other modules to import data, run elastic net, SVR
-and LSTM model and saves output model in the file
+other modules to run elastic net, SVR, Random Forest
+and LSTM model.
 """
 
 from model import *
 
 if __name__ == "__main__":
-    cob = "20230228"
+    # run Elastic Net model for all stocks
+    run_elastic_net_model_for_all_stocks()
