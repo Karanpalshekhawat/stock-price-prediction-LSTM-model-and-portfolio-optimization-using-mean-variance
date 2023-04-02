@@ -86,7 +86,8 @@ def run_elastic_net_model_for_all_stocks():
     data_dict = get_historical_stock_data(start_date, end_date)
     # training data ends 2 years before while validation data starts after that and ends 1 year before
     param = {'training_end': end_date - timedelta(seconds=2 * 365.2425 * 24 * 60 * 60),
-             'validation_end': end_date - timedelta(seconds=1 * 365.2425 * 24 * 60 * 60)}
+             'validation_end': end_date - timedelta(seconds=1 * 365.2425 * 24 * 60 * 60),
+             'past_day_returns_for_predicting': 60}
     # running for all stocks
     for key, data in data_dict.items():
         training, validation, test = train_validation_test_split(key, data, **param)
