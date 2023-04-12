@@ -47,6 +47,13 @@ def standardize_and_limit_outliers_returns(dt_model, rol_freq):
     i = 0
     for index, row in dt_model.iterrows():
         data_series = row.loc[range(1, rol_freq + 1)].values
+        # limit outliers by setting lower and upper range
+        dt_median = np.median(data_series)
+        dt_abs_spread_median = np.median(np.abs(data_series - dt_median))
+        upper_range = dt_median + 5 * dt_abs_spread_median
+        lower_range = dt_median - 5 - dt_abs_spread_median
+        data_series = np.clip(data_series, lower_range, upper_range)
+        # normalizing the data series, (not including target variable)
         mean = np.mean(data_series)
         st_dev = np.std(data_series)
         data_series = (data_series - mean) / st_dev

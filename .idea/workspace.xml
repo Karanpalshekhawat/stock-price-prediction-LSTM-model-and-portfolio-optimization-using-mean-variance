@@ -131,7 +131,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680473936676</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="train, validation and test split functionality added">
+      <created>1681335247326</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1681335247326</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -158,6 +165,7 @@
     <MESSAGE value="model saved" />
     <MESSAGE value="features and target created" />
     <MESSAGE value="data transformation" />
-    <option name="LAST_COMMIT_MESSAGE" value="data transformation" />
+    <MESSAGE value="train, validation and test split functionality added" />
+    <option name="LAST_COMMIT_MESSAGE" value="train, validation and test split functionality added" />
   </component>
 </project>
