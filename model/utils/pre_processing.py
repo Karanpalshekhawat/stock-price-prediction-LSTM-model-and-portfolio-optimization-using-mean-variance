@@ -6,8 +6,6 @@ of features and target that can be used to build model.
 import pandas as pd
 import numpy as np
 
-from sklearn.preprocessing import StandardScaler
-
 
 def create_features_and_target_split(df, rol_freq):
     """
@@ -61,7 +59,7 @@ def standardize_and_limit_outliers_returns(dt_model, rol_freq):
         i += 1
 
 
-def train_validation_test_split(stock_name, df_hist, **kwargs):
+def train_validation_test_split(df_hist, **kwargs):
     """
     Split data into training and validation test. Note that as
     the data is time series, so, split will not be random. Keep
@@ -69,7 +67,6 @@ def train_validation_test_split(stock_name, df_hist, **kwargs):
     for testing purpose and rest all for training.
 
     Args:
-        stock_name (str): stock name
         df_hist (pd.DataFrame): historical complete data
         **kwargs: training and validation test split
 

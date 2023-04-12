@@ -18,7 +18,7 @@ from model.utils.get_data import get_historical_stock_data
 def elastic_net_hyper_parameter_tuning(features, target, features_val, target_val):
     """
     build and fit the elastic net model and return
-    model parameter
+    the best model hyper-parameter
     Args:
         features (pd.DataFrame) : lagged daily returns for a rolling window as feature
         target (pd.DataFrame) : next day return as target
@@ -36,12 +36,13 @@ def elastic_net_hyper_parameter_tuning(features, target, features_val, target_va
         'l1_ratio': [.1, .2, .3, .4, .5, .6, .7, .8, .9]
     }
     # keeping the same holdout validation set for tuning
-    split_index = [-1 if x in features.index else 0 for x in features_val.index]
+    split_index = [-1] * len(features) + [0] * len(features_val)
     pds = PredefinedSplit(test_fold=split_index)
     X = np.concatenate((features, features_val), axis=0)
     y = np.concatenate((target, target_val), axis=0)
     # hyper-parameter tuning
-    clf = GridSearchCV(estimator=elastic_net, cv=pds, param_grid=param_grid, scoring="neg_mean_squared_error")
+    clf = GridSearchCV(estimator=elastic_net, cv=pds, param_grid=param_grid, scoring="neg_mean_squared_error",
+                       verbose=True)
     clf.fit(X, y)
 
     return clf.best_params_
@@ -89,6 +90,13 @@ def run_elastic_net_model_for_all_stocks():
              'validation_end': end_date - timedelta(seconds=1 * 365.2425 * 24 * 60 * 60),
              'past_day_returns_for_predicting': 60}
     # running for all stocks
+    rol_freq = param['past_day_returns_for_predicting']
     for key, data in data_dict.items():
-        training, validation, test = train_validation_test_split(key, data, **param)
+        training, validation, test = train_validation_test_split(data, **param)
+        best_hyper_parameter = elastic_net_hyper_parameter_tuning(training[range(1, rol_freq + 1)], training['target'],
+                                                                  validation[range(1, rol_freq + 1)],
+                                                                  validation['target'])
+        elastic_model(key, training[range(1, rol_freq + 1)], training['target'], best_hyper_parameter['alpha'],
+                      best_hyper_parameter['l1_ratio'])
 
+    return
