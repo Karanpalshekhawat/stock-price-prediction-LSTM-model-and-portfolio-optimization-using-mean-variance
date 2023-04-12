@@ -44,10 +44,14 @@ def standardize_and_limit_outliers_returns(dt_model, rol_freq):
         dt_model (pd.DataFrame) : historical dataset
         rol_freq (int) : past return used
     """
+    i = 0
     for index, row in dt_model.iterrows():
         data_series = row.loc[range(1, rol_freq + 1)].values
         mean = np.mean(data_series)
         st_dev = np.std(data_series)
+        data_series = (data_series - mean) / st_dev
+        dt_model.iloc[i, 0:rol_freq] = data_series
+        i += 1
 
 
 def train_validation_test_split(stock_name, df_hist, **kwargs):
@@ -67,15 +71,15 @@ def train_validation_test_split(stock_name, df_hist, **kwargs):
     """
     df_hist['daily_returns'] = df_hist['Adj Close'].pct_change()
     df_hist = df_hist.dropna()
+    # create rolling dataset
     dt_model = create_features_and_target_split(pd.DataFrame(df_hist['daily_returns']),
                                                 kwargs['past_day_returns_for_predicting'])
-    standardize_and_limit_outliers_returns(dt_model)
+    # normalize and remove outliers
+    standardize_and_limit_outliers_returns(dt_model, kwargs['past_day_returns_for_predicting'])
     # split the original dataset into 3 sets
     df_training = dt_model[dt_model.index <= kwargs['training_end']]
     df_validation = dt_model[
         (dt_model.index > kwargs['training_end']) & (dt_model.index <= kwargs['validation_end'])]
     df_test = dt_model[dt_model.index > kwargs['validation_end']]
 
-    # create rolling dataset
-
-    return
+    return df_training, df_validation, df_test
