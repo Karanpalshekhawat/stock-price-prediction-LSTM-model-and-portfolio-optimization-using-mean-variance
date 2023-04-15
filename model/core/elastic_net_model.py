@@ -40,8 +40,7 @@ def elastic_net_hyper_parameter_tuning(features, target, features_val, target_va
     X = np.concatenate((features, features_val), axis=0)
     y = np.concatenate((target, target_val), axis=0)
     # hyper-parameter tuning
-    clf = GridSearchCV(estimator=elastic_net, cv=pds, param_grid=param_grid, scoring="neg_mean_squared_error",
-                       verbose=True)
+    clf = GridSearchCV(elastic_net, cv=pds, param_grid=param_grid, scoring="neg_mean_squared_error", verbose=True)
     clf.fit(X, y)
 
     return clf.best_params_
@@ -68,7 +67,7 @@ def elastic_model(stock, features, target, alpha, l1_ratio):
     with open(model_save_path, 'wb') as f:
         pickle.dump(model, f)
 
-    return
+    return model
 
 
 def run_elastic_net_model_for_all_stocks():
@@ -92,11 +91,9 @@ def run_elastic_net_model_for_all_stocks():
     # running for all stocks
     rol_freq = param['past_day_returns_for_predicting']
     for key, data in data_dict.items():
-        training, validation, test = train_validation_test_split(data, **param)
-        best_hyper_parameter = elastic_net_hyper_parameter_tuning(training[range(1, rol_freq + 1)], training['target'],
-                                                                  validation[range(1, rol_freq + 1)],
-                                                                  validation['target'])
-        elastic_model(key, training[range(1, rol_freq + 1)], training['target'], best_hyper_parameter['alpha'],
-                      best_hyper_parameter['l1_ratio'])
+        X_train_norm, Y_train, X_val_norm, Y_val, scaler = train_validation_test_split(data, **param)
+        best_hyper_parameter = elastic_net_hyper_parameter_tuning(X_train_norm, Y_train, X_val_norm, Y_val)
+        final_model = elastic_model(key, X_train_norm, Y_train, best_hyper_parameter['alpha'],
+                                    best_hyper_parameter['l1_ratio'])
 
-    return
+    return final_model, scaler

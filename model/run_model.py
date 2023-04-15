@@ -8,4 +8,4 @@ from model import *
 
 if __name__ == "__main__":
     # run Elastic Net model for all stocks
-    run_elastic_net_model_for_all_stocks()
+    model, scaler = run_elastic_net_model_for_all_stocks()

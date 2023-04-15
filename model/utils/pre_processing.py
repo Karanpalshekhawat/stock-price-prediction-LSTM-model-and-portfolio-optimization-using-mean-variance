@@ -6,6 +6,8 @@ of features and target that can be used to build model.
 import pandas as pd
 import numpy as np
 
+from sklearn.preprocessing import StandardScaler
+
 
 def create_features_and_target_split(df, rol_freq):
     """
@@ -32,7 +34,7 @@ def create_features_and_target_split(df, rol_freq):
     return dt_preprocess
 
 
-def standardize_and_limit_outliers_returns(dt_model, rol_freq):
+def standardize_and_limit_outliers_returns_first_try(dt_model, rol_freq):
     """
     Compute daily returns, standardize the returns and
     limit the returns if there are outliers in both
@@ -59,6 +61,38 @@ def standardize_and_limit_outliers_returns(dt_model, rol_freq):
         i += 1
 
 
+def standardize_and_limit_outliers_returns(dt_model, rol_freq, **kwargs):
+    """
+    Compute daily returns, standardize the returns and
+    limit the returns if there are outliers in both
+    positive and negative side.
+
+    Args:
+        dt_model (pd.DataFrame) : historical dataset
+        rol_freq (int) : past return used
+        **kwargs: training and validation test split
+
+    Returns:
+        dataframes
+    """
+    # split the original dataset into 3 sets
+    df_training = dt_model[dt_model.index <= kwargs['training_end']]
+    df_validation = dt_model[
+        (dt_model.index > kwargs['training_end']) & (dt_model.index <= kwargs['validation_end'])]
+    df_test = dt_model[dt_model.index > kwargs['validation_end']]
+    X_train = df_training.iloc[:, :rol_freq].values
+    X_val = df_validation.iloc[:, :rol_freq].values
+    X_test = df_test.iloc[:, :rol_freq].values
+    Y_train = df_training['target'].values
+    Y_val = df_validation['target'].values
+    # Normalize the feature vectors in the training set
+    scaler = StandardScaler()
+    X_train_norm = scaler.fit_transform(X_train)
+    X_val_norm = scaler.transform(X_val)
+
+    return X_train_norm, Y_train, X_val_norm, Y_val, scaler
+
+
 def train_validation_test_split(df_hist, **kwargs):
     """
     Split data into training and validation test. Note that as
@@ -79,14 +113,8 @@ def train_validation_test_split(df_hist, **kwargs):
     dt_model = create_features_and_target_split(pd.DataFrame(df_hist['daily_returns']),
                                                 kwargs['past_day_returns_for_predicting'])
     # normalize and remove outliers
-    standardize_and_limit_outliers_returns(dt_model, kwargs['past_day_returns_for_predicting'])
-    # split the original dataset into 3 sets
-    df_training = dt_model[dt_model.index <= kwargs['training_end']]
-    df_validation = dt_model[
-        (dt_model.index > kwargs['training_end']) & (dt_model.index <= kwargs['validation_end'])]
-    df_test = dt_model[dt_model.index > kwargs['validation_end']]
 
-    return df_training, df_validation, df_test
+    return standardize_and_limit_outliers_returns(dt_model, kwargs['past_day_returns_for_predicting'], **kwargs)
 
 
 def pre_process_for_test_set(daily_returns):
