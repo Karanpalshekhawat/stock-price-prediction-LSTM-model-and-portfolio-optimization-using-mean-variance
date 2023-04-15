@@ -79,10 +79,8 @@ def standardize_and_limit_outliers_returns(dt_model, rol_freq, **kwargs):
     df_training = dt_model[dt_model.index <= kwargs['training_end']]
     df_validation = dt_model[
         (dt_model.index > kwargs['training_end']) & (dt_model.index <= kwargs['validation_end'])]
-    df_test = dt_model[dt_model.index > kwargs['validation_end']]
     X_train = df_training.iloc[:, :rol_freq].values
     X_val = df_validation.iloc[:, :rol_freq].values
-    X_test = df_test.iloc[:, :rol_freq].values
     Y_train = df_training['target'].values
     Y_val = df_validation['target'].values
     # Normalize the feature vectors in the training set

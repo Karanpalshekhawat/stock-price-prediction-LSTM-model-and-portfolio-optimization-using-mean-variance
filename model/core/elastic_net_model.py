@@ -4,6 +4,7 @@ which uses penalties from both lasso and ridge
 regression to regularize regression models.
 """
 import pickle
+import collections
 import numpy as np
 import pandas as pd
 
@@ -79,7 +80,7 @@ def run_elastic_net_model_for_all_stocks():
     then build and save model.
 
     Returns:
-        save all the models
+        save all the models, dictionary with model details
     """
     start_date = date(2016, 1, 1)
     end_date = datetime.today()
@@ -90,10 +91,15 @@ def run_elastic_net_model_for_all_stocks():
              'past_day_returns_for_predicting': 60}
     # running for all stocks
     rol_freq = param['past_day_returns_for_predicting']
+    model_details = collections.OrderedDict()
     for key, data in data_dict.items():
         X_train_norm, Y_train, X_val_norm, Y_val, scaler = train_validation_test_split(data, **param)
         best_hyper_parameter = elastic_net_hyper_parameter_tuning(X_train_norm, Y_train, X_val_norm, Y_val)
         final_model = elastic_model(key, X_train_norm, Y_train, best_hyper_parameter['alpha'],
                                     best_hyper_parameter['l1_ratio'])
+        model_details[key] = {
+            'model': final_model,
+            'scaler': scaler
+        }
 
-    return final_model, scaler
+    return model_details

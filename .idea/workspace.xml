@@ -5,26 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4da043ef-815b-4457-aa31-c4a6169e4a0f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/core/elastic_net_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/core/elastic_net_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/ElasticNet/AsianPaints.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/ElasticNet/AxisBank.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/ElasticNet/BhartiAirtel.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/ElasticNet/EicherMotors.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/ElasticNet/HUL.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/ElasticNet/ITC.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/ElasticNet/JSWSteel.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/ElasticNet/M&amp;MLtd.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/ElasticNet/NTPC.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/ElasticNet/ONGC.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/ElasticNet/Reliance.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/ElasticNet/SBI.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/ElasticNet/SunPharma.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/ElasticNet/TCS.pkl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/ElasticNet/TechMahindra.pkl" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/model/run_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/run_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/utils/pre_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/utils/pre_processing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/elastic_net_model_accuracy.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/elastic_net_model_accuracy.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +167,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681568815992</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="different approach for scaling and tranform feature vectors">
+      <created>1681594301642</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1681594301642</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -216,6 +206,7 @@
     <MESSAGE value="final model saved" />
     <MESSAGE value="name of stocks updated to remove blanks" />
     <MESSAGE value="Approach used to save and read models changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Approach used to save and read models changed" />
+    <MESSAGE value="different approach for scaling and tranform feature vectors" />
+    <option name="LAST_COMMIT_MESSAGE" value="different approach for scaling and tranform feature vectors" />
   </component>
 </project>
