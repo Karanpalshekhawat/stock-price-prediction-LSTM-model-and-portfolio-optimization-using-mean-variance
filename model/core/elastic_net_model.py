@@ -3,8 +3,7 @@ This module build elastic net linear regression
 which uses penalties from both lasso and ridge
 regression to regularize regression models.
 """
-
-import joblib
+import pickle
 import numpy as np
 import pandas as pd
 
@@ -66,7 +65,8 @@ def elastic_model(stock, features, target, alpha, l1_ratio):
 
     # save the model
     model_save_path = r"./model/output/ElasticNet/" + stock + ".pkl"
-    joblib.dump(model, model_save_path)
+    with open(model_save_path, 'wb') as f:
+        pickle.dump(model, f)
 
     return
 

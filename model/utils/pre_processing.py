@@ -87,3 +87,28 @@ def train_validation_test_split(df_hist, **kwargs):
     df_test = dt_model[dt_model.index > kwargs['validation_end']]
 
     return df_training, df_validation, df_test
+
+
+def pre_process_for_test_set(daily_returns):
+    """
+    This method normalises returns
+    and removes outliers. This approach is same
+    as what we used while creating training dataset
+    to make predictions on aligned data.
+
+    Args:
+        daily_returns (numpy array): daily return array
+
+    Returns:
+        numpy array
+    """
+    dt_median = np.median(daily_returns)
+    dt_abs_spread_median = np.median(np.abs(daily_returns - dt_median))
+    upper_range = dt_median + 5 * dt_abs_spread_median
+    lower_range = dt_median - 5 - dt_abs_spread_median
+    limit_returns = np.clip(daily_returns, lower_range, upper_range)
+    mean = np.mean(limit_returns)
+    st_dev = np.std(limit_returns)
+    limit_returns = (limit_returns - mean) / st_dev
+
+    return limit_returns

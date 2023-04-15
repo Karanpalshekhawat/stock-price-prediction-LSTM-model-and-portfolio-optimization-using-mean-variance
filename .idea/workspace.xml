@@ -5,6 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4da043ef-815b-4457-aa31-c4a6169e4a0f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/model/output/ElasticNet/AsianPaints.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/output/ElasticNet/AxisBank.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/output/ElasticNet/BhartiAirtel.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/output/ElasticNet/EicherMotors.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/output/ElasticNet/HUL.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/output/ElasticNet/ITC.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/output/ElasticNet/JSWSteel.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/output/ElasticNet/M&amp;MLtd.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/output/ElasticNet/NTPC.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/output/ElasticNet/ONGC.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/output/ElasticNet/Reliance.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/output/ElasticNet/SBI.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/output/ElasticNet/SunPharma.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/output/ElasticNet/TCS.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/output/ElasticNet/TechMahindra.pkl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/elastic_net_model_accuracy-checkpoint.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notebooks/elastic_net_model_accuracy.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/core/elastic_net_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/core/elastic_net_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/utils/pre_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/utils/pre_processing.py" afterDir="false" />
@@ -146,7 +163,21 @@
       <option name="project" value="LOCAL" />
       <updated>1681336579377</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="final model saved">
+      <created>1681340731482</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1681340731482</updated>
+    </task>
+    <task id="LOCAL-00016" summary="name of stocks updated to remove blanks">
+      <created>1681340870410</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1681340870410</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -175,6 +206,8 @@
     <MESSAGE value="data transformation" />
     <MESSAGE value="train, validation and test split functionality added" />
     <MESSAGE value="limiting upper and lower range" />
-    <option name="LAST_COMMIT_MESSAGE" value="limiting upper and lower range" />
+    <MESSAGE value="final model saved" />
+    <MESSAGE value="name of stocks updated to remove blanks" />
+    <option name="LAST_COMMIT_MESSAGE" value="name of stocks updated to remove blanks" />
   </component>
 </project>
