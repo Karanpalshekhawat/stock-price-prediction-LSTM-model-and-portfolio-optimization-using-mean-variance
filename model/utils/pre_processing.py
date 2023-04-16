@@ -34,7 +34,7 @@ def create_features_and_target_split(df, rol_freq):
     return dt_preprocess
 
 
-def standardize_and_limit_outliers_returns_first_try(dt_model, rol_freq):
+def standardize_and_limit_outliers_returns_first_try(dt_model, rol_freq, **kwargs):
     """
     Compute daily returns, standardize the returns and
     limit the returns if there are outliers in both
@@ -43,6 +43,7 @@ def standardize_and_limit_outliers_returns_first_try(dt_model, rol_freq):
     Args:
         dt_model (pd.DataFrame) : historical dataset
         rol_freq (int) : past return used
+        **kwargs: training and validation test split
     """
     i = 0
     for index, row in dt_model.iterrows():
@@ -59,6 +60,15 @@ def standardize_and_limit_outliers_returns_first_try(dt_model, rol_freq):
         data_series = (data_series - mean) / st_dev
         dt_model.iloc[i, 0:rol_freq] = data_series
         i += 1
+    df_training = dt_model[dt_model.index <= kwargs['training_end']]
+    df_validation = dt_model[
+        (dt_model.index > kwargs['training_end']) & (dt_model.index <= kwargs['validation_end'])]
+    X_train = df_training.iloc[:, :rol_freq].values
+    X_val = df_validation.iloc[:, :rol_freq].values
+    Y_train = df_training['target'].values
+    Y_val = df_validation['target'].values
+
+    return X_train, Y_train, X_val, Y_val
 
 
 def standardize_and_limit_outliers_returns(dt_model, rol_freq, **kwargs):

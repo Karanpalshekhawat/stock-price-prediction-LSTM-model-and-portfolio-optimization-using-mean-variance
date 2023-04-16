@@ -73,7 +73,6 @@ nbformat @ file:///home/conda/feedstock_root/build_artifacts/nbformat_1673560067
 nest-asyncio @ file:///home/conda/feedstock_root/build_artifacts/nest-asyncio_1664684991461/work
 notebook @ file:///home/conda/feedstock_root/build_artifacts/notebook_1667565639349/work
 notebook_shim @ file:///home/conda/feedstock_root/build_artifacts/notebook-shim_1667478401171/work
-numpy @ file:///Users/runner/miniforge3/conda-bld/numpy_1672415800930/work
 oauthlib==3.2.2
 opt-einsum==3.3.0
 option-price==0.2.0
@@ -153,4 +152,3 @@ zipp @ file:///home/conda/feedstock_root/build_artifacts/zipp_1674910338934/work
 yaml~=0.2.5
 pyyaml~=6.0
 setuptools~=65.5.1
-numpy~=1.24.1
