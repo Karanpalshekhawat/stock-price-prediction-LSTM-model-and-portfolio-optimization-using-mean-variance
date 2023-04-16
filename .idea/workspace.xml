@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4da043ef-815b-4457-aa31-c4a6169e4a0f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/model/core/elastic_net_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/core/elastic_net_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/run_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/run_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/utils/pre_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/utils/pre_processing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/elastic_net_model_accuracy.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/elastic_net_model_accuracy.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681594301642</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="restructure to save all models">
+      <created>1681595838882</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1681595838885</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -207,6 +213,7 @@
     <MESSAGE value="name of stocks updated to remove blanks" />
     <MESSAGE value="Approach used to save and read models changed" />
     <MESSAGE value="different approach for scaling and tranform feature vectors" />
-    <option name="LAST_COMMIT_MESSAGE" value="different approach for scaling and tranform feature vectors" />
+    <MESSAGE value="restructure to save all models" />
+    <option name="LAST_COMMIT_MESSAGE" value="restructure to save all models" />
   </component>
 </project>
