@@ -5,6 +5,7 @@ of features and target that can be used to build model.
 """
 import pandas as pd
 import numpy as np
+import tulipy as ti
 
 from sklearn.preprocessing import StandardScaler
 
@@ -48,16 +49,16 @@ def standardize_and_limit_outliers_returns_first_try(dt_model, rol_freq, **kwarg
     i = 0
     for index, row in dt_model.iterrows():
         data_series = row.loc[range(1, rol_freq + 1)].values
-        # limit outliers by setting lower and upper range
-        dt_median = np.median(data_series)
-        dt_abs_spread_median = np.median(np.abs(data_series - dt_median))
-        upper_range = dt_median + 5 * dt_abs_spread_median
-        lower_range = dt_median - 5 - dt_abs_spread_median
-        data_series = np.clip(data_series, lower_range, upper_range)
-        # normalizing the data series, (not including target variable)
-        mean = np.mean(data_series)
-        st_dev = np.std(data_series)
-        data_series = (data_series - mean) / st_dev
+        # # limit outliers by setting lower and upper range
+        # dt_median = np.median(data_series)
+        # dt_abs_spread_median = np.median(np.abs(data_series - dt_median))
+        # upper_range = dt_median + 5 * dt_abs_spread_median
+        # lower_range = dt_median - 5 - dt_abs_spread_median
+        # data_series = np.clip(data_series, lower_range, upper_range)
+        # # normalizing the data series, (not including target variable)
+        # mean = np.mean(data_series)
+        # st_dev = np.std(data_series)
+        # data_series = (data_series - mean) / st_dev
         dt_model.iloc[i, 0:rol_freq] = data_series
         i += 1
     df_training = dt_model[dt_model.index <= kwargs['training_end']]
@@ -148,3 +149,22 @@ def pre_process_for_test_set(daily_returns):
     limit_returns = (limit_returns - mean) / st_dev
 
     return limit_returns
+
+
+def add_momentum_indicators(data):
+    """
+    This method adds momentum indicators in the
+    historical dataset of the stock prices
+
+    Args:
+        data (pd.DataFrame): stock price data from yahoo finance
+
+    """
+    data['RSI'] = ti.rsi(data['Close'].values, period=14)
+    macd, macd_signal, macd_hist = ti.macd(data['Close'].values, 12, 26, 9)
+    data['MACD'] = macd
+    upper, middle, lower = ti.bbands(data['Close'].values, period=20, stddev=2)
+    data['UpperBollingerBand'] = upper
+    data['LowerBollingerBand'] = lower
+
+    return data
