@@ -160,11 +160,12 @@ def add_momentum_indicators(data):
         data (pd.DataFrame): stock price data from yahoo finance
 
     """
-    data['RSI'] = ti.rsi(data['Close'].values, period=14)
-    macd, macd_signal, macd_hist = ti.macd(data['Close'].values, 12, 26, 9)
-    data['MACD'] = macd
-    upper, middle, lower = ti.bbands(data['Close'].values, period=20, stddev=2)
-    data['UpperBollingerBand'] = upper
-    data['LowerBollingerBand'] = lower
+    rsi = ti.rsi(data['Adj Close'].values, period=14)
+    data['RSI'] = [np.nan] * (len(data) - len(rsi)) + list(rsi)
+    ma_cd, _, _ = ti.macd(data['Adj Close'].values, 12, 26, 9)
+    data['MACD'] = [np.nan] * (len(data) - len(ma_cd)) + list(ma_cd)
+    lower, _, upper = ti.bbands(data['Adj Close'].values, period=20, stddev=2)
+    data['UpperBollingerBand'] = [np.nan] * (len(data) - len(upper)) + list(upper)
+    data['LowerBollingerBand'] = [np.nan] * (len(data) - len(lower)) + list(lower)
 
     return data
