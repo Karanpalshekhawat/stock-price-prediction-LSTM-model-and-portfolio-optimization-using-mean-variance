@@ -37,8 +37,10 @@ def get_historical_stock_data(start_date, end_date):
     df_tickers = read_yf_tickers()
     otpt_dict = collections.OrderedDict()
     for ticker, stock in zip(df_tickers['ticker'].values, df_tickers['stock'].values):
-        otpt_dict[stock] = yf.download(ticker, start=start_date, end=end_date)
+        df_hist = yf.download(ticker, start=start_date, end=end_date)
+        df_all_dates = pd.DataFrame(index=pd.bdate_range(start=start_date, end=end_date))
+        df_hist = pd.merge(df_all_dates, df_hist, how="left", left_index=True, right_index=True)
+        df_hist = df_hist.fillna((df_hist.shift() + df_hist.shift(-1)) / 2)
+        otpt_dict[stock] = df_hist
 
     return otpt_dict
-
-

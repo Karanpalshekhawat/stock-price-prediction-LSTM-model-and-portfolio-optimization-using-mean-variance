@@ -5,9 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4da043ef-815b-4457-aa31-c4a6169e4a0f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/utils/pre_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/utils/pre_processing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/utils/get_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/utils/get_data.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/elastic_net_model_accuracy-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/elastic_net_model_accuracy-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notebooks/elastic_net_model_accuracy.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/elastic_net_model_accuracy.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
