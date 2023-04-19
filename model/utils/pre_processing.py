@@ -115,32 +115,33 @@ def train_validation_test_split(df_hist, **kwargs):
                                                   technical_indicator_features, **kwargs)
 
 
-# ignore below methods
-def pre_process_for_test_set(daily_returns):
+def get_features_for_multi_step_forecasting(price_history, rol_freq, technical_indicator_features):
     """
-    This method normalises returns
-    and removes outliers. This approach is same
-    as what we used while creating training dataset
-    to make predictions on aligned data.
+    This method gets predicted price history. In multi-step forecasting, we use
+    predicted data as an input in model to create input features used in model
+    and then use those features to make predictions for comparing model.
 
     Args:
-        daily_returns (numpy array): daily return array
+        price_history (numpy array): predicted price history which we will use to compute features
+        rol_freq (int): number of past days consider for predicting next day return
+        technical_indicator_features (list) : feature columns for technical indicators
 
     Returns:
         numpy array
     """
-    dt_median = np.median(daily_returns)
-    dt_abs_spread_median = np.median(np.abs(daily_returns - dt_median))
-    upper_range = dt_median + 5 * dt_abs_spread_median
-    lower_range = dt_median - 5 - dt_abs_spread_median
-    limit_returns = np.clip(daily_returns, lower_range, upper_range)
-    mean = np.mean(limit_returns)
-    st_dev = np.std(limit_returns)
-    limit_returns = (limit_returns - mean) / st_dev
+    price_history.rename(columns={'Predicted Adj Close': 'Adj Close'},
+                         inplace=True)  # to leverage the same existing code used in training
+    price_history = add_technical_indicators(price_history)
+    price_history['daily_returns'] = price_history['Adj Close'].pct_change()
+    dt_test_model = create_features_and_target_split(pd.DataFrame(price_history['daily_returns']), rol_freq)
+    dt_test_model = pd.merge(dt_test_model, price_history, how="left", left_index=True, right_index=True)
+    feature_ls = np.concatenate(
+        (dt_test_model.iloc[-1, :rol_freq].values, dt_test_model.iloc[-1][technical_indicator_features].values))
 
-    return limit_returns
+    return feature_ls
 
 
+# ignore below methods
 def standardize_and_limit_outliers_returns_first_try(dt_model, rol_freq, **kwargs):
     """
     Compute daily returns, standardize the returns and

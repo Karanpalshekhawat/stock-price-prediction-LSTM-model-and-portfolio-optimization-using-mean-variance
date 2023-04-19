@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4da043ef-815b-4457-aa31-c4a6169e4a0f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/elastic_net_model_accuracy-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/elastic_net_model_accuracy-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/utils/pre_processing.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/utils/pre_processing.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notebooks/elastic_net_model_accuracy.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/elastic_net_model_accuracy.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -209,7 +211,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681852178553</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Updated notebook to compare prediction on a test dataset">
+      <created>1681857262759</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1681857262759</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -246,6 +255,7 @@
     <MESSAGE value="Tried other things but no final conclusion yet" />
     <MESSAGE value="technical indicators added" />
     <MESSAGE value="restructured to create model run data" />
-    <option name="LAST_COMMIT_MESSAGE" value="restructured to create model run data" />
+    <MESSAGE value="Updated notebook to compare prediction on a test dataset" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated notebook to compare prediction on a test dataset" />
   </component>
 </project>
