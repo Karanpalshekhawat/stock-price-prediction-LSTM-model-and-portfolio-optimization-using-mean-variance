@@ -19,6 +19,7 @@ def elastic_net_hyper_parameter_tuning(features, target, features_val, target_va
     """
     build and fit the elastic net model and return
     the best model hyper-parameter
+
     Args:
         features (pd.DataFrame) : lagged daily returns for a rolling window as feature
         target (pd.DataFrame) : next day return as target
@@ -90,7 +91,6 @@ def run_elastic_net_model_for_all_stocks():
              'validation_end': end_date - timedelta(seconds=1 * 365.2425 * 24 * 60 * 60),
              'past_day_returns_for_predicting': 21}
     # running for all stocks
-    rol_freq = param['past_day_returns_for_predicting']
     model_details = collections.OrderedDict()
     for key, data in data_dict.items():
         data = add_technical_indicators(data)

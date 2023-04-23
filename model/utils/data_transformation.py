@@ -11,7 +11,6 @@ import numpy as np
 def huber_location_estimator(x, c=1.345):
     """
     Computes huber location estimator
-    for an
 
     Args:
         x: numpy array
