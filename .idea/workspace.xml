@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4da043ef-815b-4457-aa31-c4a6169e4a0f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/elastic_net_model_accuracy-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/elastic_net_model_accuracy-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notebooks/elastic_net_model_accuracy.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/elastic_net_model_accuracy.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -231,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682087845966</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="notebook updated">
+      <created>1682254975276</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1682254975276</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -246,7 +252,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update in readme file" />
     <MESSAGE value="small restrcuture" />
     <MESSAGE value="small update in readme file" />
     <MESSAGE value="stocks ticker added" />
@@ -271,6 +276,7 @@
     <MESSAGE value="Updated notebook to compare prediction on a test dataset" />
     <MESSAGE value="averaging the in between data from yfinance" />
     <MESSAGE value="hyper parameter tuning completed" />
-    <option name="LAST_COMMIT_MESSAGE" value="hyper parameter tuning completed" />
+    <MESSAGE value="notebook updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="notebook updated" />
   </component>
 </project>
