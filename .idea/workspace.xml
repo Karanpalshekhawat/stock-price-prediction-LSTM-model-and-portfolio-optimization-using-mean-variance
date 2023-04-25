@@ -5,10 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4da043ef-815b-4457-aa31-c4a6169e4a0f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/model/core/LSTM.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/core/LSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/core/LSTM.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/core/elastic_net_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/core/elastic_net_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/utils/data_transformation.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/utils/data_transformation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/run_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/run_model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,7 +240,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682254975276</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="LSTM base model information added">
+      <created>1682289438567</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1682289438568</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -254,7 +262,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="small restrcuture" />
     <MESSAGE value="small update in readme file" />
     <MESSAGE value="stocks ticker added" />
     <MESSAGE value="Removed some files" />
@@ -279,6 +286,7 @@
     <MESSAGE value="averaging the in between data from yfinance" />
     <MESSAGE value="hyper parameter tuning completed" />
     <MESSAGE value="notebook updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="notebook updated" />
+    <MESSAGE value="LSTM base model information added" />
+    <option name="LAST_COMMIT_MESSAGE" value="LSTM base model information added" />
   </component>
 </project>
