@@ -73,13 +73,19 @@ def run_lstm_model_for_all_stocks(data_dict, end_date):
     for key, data in data_dict.items():
         data = add_technical_indicators(data)
         X_train_norm, Y_train, X_val_norm, Y_val, scaler = train_validation_test_split(data, **param)
-        lstm_model = build_lstm_model_structure(X_train_norm.shape[1], 10)
-        batch_size = 100
-        epochs = 5
-        lstm_model.fit(X_train_norm, Y_train, batch_size=batch_size, epochs=epochs, verbose=True)
+        X_train_norm = np.asarray(X_train_norm).astype(np.float32)
+        Y_train = np.asarray(Y_train).astype(np.float32)
+        new_x_tensor = X_train_norm.reshape((1, X_train_norm.shape[0], X_train_norm.shape[1]))
+        new_y_tensor = Y_train.reshape(1, Y_train.shape[0])
+        lstm_model = build_lstm_model_structure(num_features=X_train_norm.shape[1], num_units=10)
+        lstm_model.fit(new_x_tensor, new_y_tensor, batch_size=100, epochs=5, verbose=True)
         model_details[key] = {
             'model': lstm_model,
             'scaler': scaler
         }
+        # save the model
+        model_save_path = r"./model/output/LSTM/" + key + ".pkl"
+        with open(model_save_path, 'wb') as f:
+            pickle.dump(lstm_model, f)
 
     return

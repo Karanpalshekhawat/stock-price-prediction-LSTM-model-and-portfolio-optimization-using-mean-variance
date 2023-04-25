@@ -6,7 +6,7 @@ and LSTM model.
 
 from model import *
 
-from datetime import date, datetime, timedelta
+from datetime import date, datetime
 
 
 if __name__ == "__main__":
@@ -15,3 +15,4 @@ if __name__ == "__main__":
     data_dict = get_historical_stock_data(start_date, end_date)
     # run Elastic Net model for all stocks
     elastic_net_model_details = run_elastic_net_model_for_all_stocks(data_dict, end_date)
+    lstm_model_details = run_lstm_model_for_all_stocks(data_dict, end_date)

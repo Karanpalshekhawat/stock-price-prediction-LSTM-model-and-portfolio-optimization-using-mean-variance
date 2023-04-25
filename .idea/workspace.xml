@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/core/LSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/core/LSTM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/core/elastic_net_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/core/elastic_net_model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/run_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/run_model.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -247,7 +246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682289438568</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="lstm model fit added">
+      <created>1682436687719</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1682436687719</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -262,7 +268,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="small update in readme file" />
     <MESSAGE value="stocks ticker added" />
     <MESSAGE value="Removed some files" />
     <MESSAGE value="historical data extracted" />
@@ -287,6 +292,7 @@
     <MESSAGE value="hyper parameter tuning completed" />
     <MESSAGE value="notebook updated" />
     <MESSAGE value="LSTM base model information added" />
-    <option name="LAST_COMMIT_MESSAGE" value="LSTM base model information added" />
+    <MESSAGE value="lstm model fit added" />
+    <option name="LAST_COMMIT_MESSAGE" value="lstm model fit added" />
   </component>
 </project>
