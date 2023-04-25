@@ -8,18 +8,18 @@ is leveraged from there.
 import pickle
 import collections
 import numpy as np
-import pandas as pd
 from datetime import datetime, timedelta
 
-from keras.layers.core import Dense, Dropout
+from keras.layers.core import Dense, Activation, Dropout
 from keras.layers import LSTM
 from keras.models import Sequential
-from keras.optimizers import Adam
+from keras.optimizers import Adam, RMSprop
+from tensorflow_addons.metrics import RSquare
 
-from model.utils.pre_processing import train_validation_test_split, add_technical_indicators
+from model.utils.pre_processing_LSTM import train_validation_test_split, add_technical_indicators
 
 
-def build_lstm_model_structure(num_features, num_units, activation='tanh', dropout_rate=0.2, learning_rate=0.001):
+def build_lstm_model_structure(num_features, num_units, activation='relu', dropout_rate=0.2, learning_rate=0.0001):
     """
     This method defines the layered structure
     of a LSTM model for a set of parameters.
@@ -37,17 +37,18 @@ def build_lstm_model_structure(num_features, num_units, activation='tanh', dropo
     model = Sequential()
 
     # Add 3 LSTM layers with the same number of units and activation function
-    model.add(LSTM(units=num_units, activation=activation, return_sequences=True, input_shape=(None, num_features)))
+    model.add(LSTM(units=num_units, activation=activation, return_sequences=True, input_shape=(num_features, 1)))
     model.add(Dropout(dropout_rate))
     model.add(LSTM(units=num_units, activation=activation, return_sequences=True))
     model.add(Dropout(dropout_rate))
     model.add(LSTM(units=num_units, activation=activation))
     # Add a dense output layer with a single output unit
     model.add(Dense(units=1))
+    model.add(Activation('linear'))
 
     # Define optimizer
-    optimizer = Adam(learning_rate=learning_rate)
-    model.compile(optimizer=optimizer, loss='mean_squared_error')
+    optimizer = RMSprop(learning_rate=learning_rate)
+    model.compile(optimizer=optimizer, loss='mean_squared_error', metrics=[RSquare()])
 
     return model
 
@@ -67,7 +68,7 @@ def run_lstm_model_for_all_stocks(data_dict, end_date):
     """
     param = {'training_end': end_date - timedelta(seconds=2 * 365.2425 * 24 * 60 * 60),
              'validation_end': end_date - timedelta(seconds=1 * 365.2425 * 24 * 60 * 60),
-             'past_day_returns_for_predicting': 21}
+             'past_day_returns_for_predicting': 10}
     # running for all stocks
     model_details = collections.OrderedDict()
     for key, data in data_dict.items():
@@ -75,10 +76,10 @@ def run_lstm_model_for_all_stocks(data_dict, end_date):
         X_train_norm, Y_train, X_val_norm, Y_val, scaler = train_validation_test_split(data, **param)
         X_train_norm = np.asarray(X_train_norm).astype(np.float32)
         Y_train = np.asarray(Y_train).astype(np.float32)
-        new_x_tensor = X_train_norm.reshape((1, X_train_norm.shape[0], X_train_norm.shape[1]))
-        new_y_tensor = Y_train.reshape(1, Y_train.shape[0])
-        lstm_model = build_lstm_model_structure(num_features=X_train_norm.shape[1], num_units=10)
-        lstm_model.fit(new_x_tensor, new_y_tensor, batch_size=100, epochs=5, verbose=True)
+        new_x_tensor = X_train_norm.reshape((X_train_norm.shape[0], X_train_norm.shape[1], 1))
+        new_y_tensor = Y_train.reshape(Y_train.shape[0], 1)
+        lstm_model = build_lstm_model_structure(num_features=new_x_tensor.shape[1], num_units=50)
+        lstm_model.fit(new_x_tensor, new_y_tensor, batch_size=100, epochs=300, verbose=True)
         model_details[key] = {
             'model': lstm_model,
             'scaler': scaler
