@@ -1,12 +1,7 @@
 {
   "activation": [
     "relu",
-    "sigmoid",
     "tanh"
-  ],
-  "dropout_rate": [
-    0.0,
-    0.2
   ],
   "neurons": [
     100,
@@ -18,24 +13,20 @@
     "he_uniform"
   ],
   "optimizer": [
-    "SGD",
     "RMSprop",
     "Adam"
   ],
   "batch_size": [
-    128,
     256,
     512
   ],
   "learning_rate": [
     0.0001,
     0.001,
-    0.01,
-    0.1
+    0.01
   ],
   "epochs": [
     100,
-    200,
     300
   ]
 }

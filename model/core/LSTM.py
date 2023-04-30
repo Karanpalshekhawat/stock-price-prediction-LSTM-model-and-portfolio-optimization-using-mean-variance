@@ -8,6 +8,7 @@ is leveraged from there.
 import json
 import pickle
 import collections
+import itertools
 import numpy as np
 from datetime import datetime, timedelta
 
@@ -21,8 +22,8 @@ from sklearn.model_selection import PredefinedSplit, GridSearchCV
 from model.utils.pre_processing_LSTM import train_validation_test_split, add_technical_indicators
 
 
-def build_lstm_model_structure(num_features, neurons=100, activation='relu', dropout_rate=0.2, learning_rate=0.0001,
-                               optimizer="RMSprop"):
+def create_lstm_model(num_features, neurons=100, activation='relu', dropout_rate=0.2, learning_rate=0.0001,
+                      optimizer="RMSprop", initialization="he_uniform"):
     """
     This method defines the layered structure
     of a LSTM model for a set of parameters.
@@ -34,6 +35,7 @@ def build_lstm_model_structure(num_features, neurons=100, activation='relu', dro
         dropout_rate (float): Drop out rate after each layer for tackling over-fitting problem
         learning_rate (float): learning rate for the Adam optimizer
         optimizer (str): optimizer choosing conditions
+        initialization (str): initialisation weight parameters
 
     Returns:
         LSTM model
@@ -41,9 +43,10 @@ def build_lstm_model_structure(num_features, neurons=100, activation='relu', dro
     model = Sequential()
 
     # Add 3 LSTM layers with the same number of units and activation function
-    model.add(LSTM(units=neurons, activation=activation, return_sequences=True, input_shape=(num_features, 1)))
+    model.add(LSTM(units=neurons, activation=activation, return_sequences=True, kernel_initializer=initialization,
+                   input_shape=(num_features, 1)))
     model.add(Dropout(dropout_rate))
-    model.add(LSTM(units=neurons, activation=activation, return_sequences=True))
+    model.add(LSTM(units=neurons, activation=activation, return_sequences=True, kernel_initializer=initialization))
     model.add(Dropout(dropout_rate))
     model.add(LSTM(units=neurons, activation=activation))
     # Add a dense output layer with a single output unit
@@ -76,15 +79,16 @@ def tune_hyper_parameter(param_grid, X_train, Y_train, X_val, Y_val):
     Returns:
         best hyperparams
     """
-    model = build_lstm_model_structure(num_features=X_train.shape[1])
+    model = create_lstm_model(num_features=X_train.shape[1])
 
-    # keeping the same holdout validation set for tuning
+    # implemented own defined grid search as I was facing many issues using Grid search CV
+    # to match sk-learn method with keras method hyper parameters definitions
     split_index = [-1] * len(X_train) + [0] * len(X_val)
     pds = PredefinedSplit(test_fold=split_index)
     X = np.concatenate((X_train, X_val), axis=0)
     y = np.concatenate((Y_train, Y_val), axis=0)
 
-    clf = GridSearchCV(model, cv=pds, param_grid=param_grid, scoring="neg_mean_squared_error", verbose=True)
+    clf = GridSearchCV(estimator=model, cv=pds, param_grid=param_grid, scoring="accuracy", verbose=True)
     clf.fit(X, y)
 
     print('Best hyperparameters: ', clf.best_params_)
@@ -112,14 +116,19 @@ def create_set_of_hyperparameter():
     param_grid = {
         'activation': hyper_parameters['activation'],
         'neurons': list(np.arange(hyper_parameters['neurons'][0], hyper_parameters['neurons'][1], 50)),
-        'drop_out_rate': hyper_parameters['dropout_rate'],
         'initialization': hyper_parameters['initialization'],
         'optimizer': hyper_parameters['optimizer'],
         'batch_size': hyper_parameters['batch_size'],
-        'learning_rate': hyper_parameters['learning_rate']
+        'learning_rate': hyper_parameters['learning_rate'],
+        'epochs': hyper_parameters['epochs']
     }
+    combinations = list(itertools.product(*param_grid.values()))
+    final_params_dict = collections.OrderedDict()
+    for i, ls in enumerate(combinations):
+        final_params_dict[i] = {'activation': ls[0], 'neurons': ls[1], 'initialization': ls[2], 'optimizer': ls[3],
+                                'batch_size': ls[4], 'learning_rate': ls[5], 'epochs': ls[6]}
 
-    return param_grid
+    return final_params_dict
 
 
 def restructure_data(X_train, Y_train, X_val, Y_val):
@@ -164,7 +173,7 @@ def run_lstm_model_for_all_stocks(data_dict, end_date):
         X_train, Y_train, X_val, Y_val, scaler = train_validation_test_split(data, **param)
         X_train, Y_train, X_val, Y_val = restructure_data(X_train, Y_train, X_val, Y_val)
 
-        lstm_model = build_lstm_model_structure(num_features=new_x_tensor.shape[1], neurons=50)
+        lstm_model = create_lstm_model(num_features=new_x_tensor.shape[1], neurons=50)
         lstm_model.fit(new_x_tensor, new_y_tensor, batch_size=100, epochs=300, verbose=True)
         model_details[key] = {
             'model': lstm_model,
