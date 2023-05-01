@@ -16,26 +16,18 @@ from keras.layers.core import Dense, Activation, Dropout
 from keras.layers import LSTM
 from keras.models import Sequential
 from keras.optimizers import Adam, RMSprop
-from tensorflow_addons.metrics import RSquare
 
-from sklearn.model_selection import PredefinedSplit, GridSearchCV
 from model.utils.pre_processing_LSTM import train_validation_test_split, add_technical_indicators
 
 
-def create_lstm_model(num_features, neurons=100, activation='relu', dropout_rate=0.2, learning_rate=0.0001,
-                      optimizer="RMSprop", initialization="he_uniform"):
+def create_lstm_model(num_features, dropout_rate=0.2, **kwargs):
     """
     This method defines the layered structure
     of a LSTM model for a set of parameters.
 
     Args:
         num_features (int): number of features used to predict next day return
-        neurons (int): number of units in each LSTM layer, number of layers are fixed
-        activation (string): activation function for the LSTM layers, e.g. 'tanh', 'relu', 'sigmoid'
-        dropout_rate (float): Drop out rate after each layer for tackling over-fitting problem
-        learning_rate (float): learning rate for the Adam optimizer
-        optimizer (str): optimizer choosing conditions
-        initialization (str): initialisation weight parameters
+        dropout_rate (float): fixed dropout rate
 
     Returns:
         LSTM model
@@ -43,34 +35,35 @@ def create_lstm_model(num_features, neurons=100, activation='relu', dropout_rate
     model = Sequential()
 
     # Add 3 LSTM layers with the same number of units and activation function
-    model.add(LSTM(units=neurons, activation=activation, return_sequences=True, kernel_initializer=initialization,
-                   input_shape=(num_features, 1)))
+    model.add(LSTM(units=kwargs['neurons'], activation=kwargs['activation'], return_sequences=True,
+                   kernel_initializer=kwargs['initialization'], input_shape=(num_features, 1)))
     model.add(Dropout(dropout_rate))
-    model.add(LSTM(units=neurons, activation=activation, return_sequences=True, kernel_initializer=initialization))
+    model.add(LSTM(units=kwargs['neurons'], activation=kwargs['activation'], return_sequences=True,
+                   kernel_initializer=kwargs['initialization']))
     model.add(Dropout(dropout_rate))
-    model.add(LSTM(units=neurons, activation=activation))
+    model.add(LSTM(units=kwargs['neurons'], activation=kwargs['activation']))
     # Add a dense output layer with a single output unit
     model.add(Dense(units=1))
     model.add(Activation('linear'))
 
     # Define optimizer
-    if optimizer == "RMSprop":
-        optimizer = RMSprop(learning_rate=learning_rate)
+    if kwargs['optimizer'] == "RMSprop":
+        optimizer = RMSprop(learning_rate=kwargs['learning_rate'])
     else:
-        optimizer = Adam(learning_rate=learning_rate)
+        optimizer = Adam(learning_rate=kwargs['learning_rate'])
 
-    model.compile(optimizer=optimizer, loss='mean_squared_error', metrics=[RSquare()])
+    model.compile(optimizer=optimizer, loss='mean_squared_error')
 
     return model
 
 
-def tune_hyper_parameter(param_grid, X_train, Y_train, X_val, Y_val):
+def tune_hyper_parameter(final_params_dict, X_train, Y_train, X_val, Y_val):
     """
     This method creates the neural network
     architecture for a given set of hyperparameter
 
     Args:
-        param_grid (dict) : multiple choices for hyperparameter selection
+        final_params_dict (dict) : multiple choices for hyperparameter selection
         X_train (np.array) : training dataset
         Y_train (np.array) : target values in training dataset
         X_val (np.array) : validation dataset
@@ -79,26 +72,18 @@ def tune_hyper_parameter(param_grid, X_train, Y_train, X_val, Y_val):
     Returns:
         best hyperparams
     """
-    model = create_lstm_model(num_features=X_train.shape[1])
+    # implemented self defined grid search as I was facing many issues using Grid search CV
+    # with match sk-learn compatible hyper-parameters with keras method hyper-parameters definitions
+    loss_score = collections.OrderedDict()
+    for key, sub_dict in final_params_dict.items():
+        print(f"Model Number : {key}")
+        model = create_lstm_model(num_features=X_train.shape[1], **sub_dict)
+        model.fit(X_train, Y_train, batch_size=sub_dict['batch_size'], epochs=sub_dict['epochs'], verbose=True)
+        loss_score[key] = model.evaluate(X_val, Y_val)
 
-    # implemented own defined grid search as I was facing many issues using Grid search CV
-    # to match sk-learn method with keras method hyper parameters definitions
-    split_index = [-1] * len(X_train) + [0] * len(X_val)
-    pds = PredefinedSplit(test_fold=split_index)
-    X = np.concatenate((X_train, X_val), axis=0)
-    y = np.concatenate((Y_train, Y_val), axis=0)
+    lowest_score_key = min(loss_score, key=lambda k: loss_score[k])
 
-    clf = GridSearchCV(estimator=model, cv=pds, param_grid=param_grid, scoring="accuracy", verbose=True)
-    clf.fit(X, y)
-
-    print('Best hyperparameters: ', clf.best_params_)
-    print('Validation accuracy: ', clf.best_score_)
-
-    # Evaluate the best model on the validation set
-    best_model = clf.best_estimator_
-    val_loss, val_acc = best_model.evaluate(X_val, Y_val)
-
-    return
+    return final_params_dict[lowest_score_key]
 
 
 def create_set_of_hyperparameter():
