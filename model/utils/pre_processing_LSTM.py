@@ -136,8 +136,7 @@ def get_features_for_multi_step_forecasting(price_history, rol_freq, technical_i
     price_history.rename(columns={'Predicted Adj Close': 'Adj Close'},
                          inplace=True)  # to leverage the same existing code used in training
     price_history = add_technical_indicators(price_history)
-    price_history['daily_returns'] = price_history['Adj Close'].pct_change()
-    dt_test_model = create_features_and_target_split_lstm(pd.DataFrame(price_history['daily_returns']), rol_freq)
+    dt_test_model = create_features_and_target_split_lstm(pd.DataFrame(price_history['Adj Close']), rol_freq)
     dt_test_model = pd.merge(dt_test_model, price_history, how="left", left_index=True, right_index=True)
     feature_ls = np.concatenate(
         (dt_test_model.iloc[-1, :rol_freq].values, dt_test_model.iloc[-1][technical_indicator_features].values))

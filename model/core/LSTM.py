@@ -150,23 +150,25 @@ def run_lstm_model_for_all_stocks(data_dict, end_date):
     """
     param = {'training_end': end_date - timedelta(seconds=2 * 365.2425 * 24 * 60 * 60),
              'validation_end': end_date - timedelta(seconds=1 * 365.2425 * 24 * 60 * 60),
-             'past_day_returns_for_predicting': 10}
+             'past_day_returns_for_predicting': 21}
     # running for all stocks
+    hyper_params_dict = create_set_of_hyperparameter()
     model_details = collections.OrderedDict()
     for key, data in data_dict.items():
         data = add_technical_indicators(data)
         X_train, Y_train, X_val, Y_val, scaler = train_validation_test_split(data, **param)
         X_train, Y_train, X_val, Y_val = restructure_data(X_train, Y_train, X_val, Y_val)
-
-        lstm_model = create_lstm_model(num_features=new_x_tensor.shape[1], neurons=50)
-        lstm_model.fit(new_x_tensor, new_y_tensor, batch_size=100, epochs=300, verbose=True)
-        model_details[key] = {
-            'model': lstm_model,
-            'scaler': scaler
-        }
+        param_dict = tune_hyper_parameter(hyper_params_dict, X_train, Y_train, X_val, Y_val)
         # save the model
+        lstm_model = create_lstm_model(num_features=X_train.shape[1], **param_dict)
+        lstm_model.fit(X_train, Y_train, batch_size=param_dict['batch_size'], epochs=param_dict['epochs'], verbose=True)
         model_save_path = r"./model/output/LSTM/" + key + ".pkl"
         with open(model_save_path, 'wb') as f:
             pickle.dump(lstm_model, f)
 
-    return
+        model_details[key] = {
+            'model': lstm_model,
+            'scaler': scaler
+        }
+
+    return model_details

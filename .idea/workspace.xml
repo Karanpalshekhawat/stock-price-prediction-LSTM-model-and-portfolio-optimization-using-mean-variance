@@ -7,6 +7,7 @@
     <list default="true" id="4da043ef-815b-4457-aa31-c4a6169e4a0f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model/core/LSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/core/LSTM.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/LSTM_model_accuracy.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/LSTM_model_accuracy.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,7 +287,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682897252821</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="hyper parameters selection on lowest score on validation dataset added">
+      <created>1682899608212</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1682899608213</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -301,7 +309,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="method added for hyper-parameter tuning" />
     <MESSAGE value="model saved" />
     <MESSAGE value="features and target created" />
     <MESSAGE value="data transformation" />
@@ -326,6 +333,7 @@
     <MESSAGE value="LSTM notebook updated, need to tne hyperparamers" />
     <MESSAGE value="LSTM hyper paramter tuning method added" />
     <MESSAGE value="create unique combinations of dictionary of hyper parameters" />
-    <option name="LAST_COMMIT_MESSAGE" value="create unique combinations of dictionary of hyper parameters" />
+    <MESSAGE value="hyper parameters selection on lowest score on validation dataset added" />
+    <option name="LAST_COMMIT_MESSAGE" value="hyper parameters selection on lowest score on validation dataset added" />
   </component>
 </project>
