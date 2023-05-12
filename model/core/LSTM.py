@@ -41,6 +41,12 @@ def create_lstm_model(num_features, dropout_rate=0.2, **kwargs):
     model.add(LSTM(units=kwargs['neurons'], activation=kwargs['activation'], return_sequences=True,
                    kernel_initializer=kwargs['initialization']))
     model.add(Dropout(dropout_rate))
+    model.add(LSTM(units=kwargs['neurons'], activation=kwargs['activation'], return_sequences=True,
+                   kernel_initializer=kwargs['initialization']))
+    model.add(Dropout(dropout_rate))
+    model.add(LSTM(units=kwargs['neurons'], activation=kwargs['activation'], return_sequences=True,
+                   kernel_initializer=kwargs['initialization']))
+    model.add(Dropout(dropout_rate))
     model.add(LSTM(units=kwargs['neurons'], activation=kwargs['activation']))
     # Add a dense output layer with a single output unit
     model.add(Dense(units=1))
