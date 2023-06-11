@@ -5,7 +5,6 @@ of features and target that can be used to build model.
 """
 import pandas as pd
 import numpy as np
-import tulipy as ti
 
 from sklearn.preprocessing import StandardScaler
 
@@ -66,31 +65,6 @@ def standardize_and_limit_outliers_returns(dt_model, rol_freq, technical_indicat
     X_val_norm = scaler.transform(X_val)
 
     return X_train_norm, Y_train, X_val_norm, Y_val, scaler
-
-
-def add_technical_indicators(data):
-    """
-    This method adds momentum indicators in the
-    historical dataset of the stock prices
-
-    Args:
-        data (pd.DataFrame): stock price data from yahoo finance
-
-    """
-    sma_20 = ti.sma(data['Adj Close'].values, 20)
-    sma_50 = ti.sma(data['Adj Close'].values, 50)
-    data['ma_20'] = [np.nan] * (len(data) - len(sma_20)) + list(sma_20)
-    data['ma_50'] = [np.nan] * (len(data) - len(sma_50)) + list(sma_50)
-    rsi = ti.rsi(data['Adj Close'].values, period=14)
-    data['RSI'] = [np.nan] * (len(data) - len(rsi)) + list(rsi)
-    ma_cd, _, _ = ti.macd(data['Adj Close'].values, 12, 26, 9)
-    data['MACD'] = [np.nan] * (len(data) - len(ma_cd)) + list(ma_cd)
-    lower, _, upper = ti.bbands(data['Adj Close'].values, period=20, stddev=2)
-    data['UpperBollingerBand'] = [np.nan] * (len(data) - len(upper)) + list(upper)
-    data['LowerBollingerBand'] = [np.nan] * (len(data) - len(lower)) + list(lower)
-    technical_indicator_features = ['MA20', 'MA50', 'RSI', 'MACD', 'UpperBollingerBand', 'LowerBollingerBand']
-
-    return data, technical_indicator_features
 
 
 def train_validation_test_split(df_hist, technical_indicator_features, **kwargs):

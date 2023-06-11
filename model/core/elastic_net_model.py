@@ -11,7 +11,8 @@ import pandas as pd
 from datetime import datetime, timedelta
 from sklearn.linear_model import ElasticNet
 from sklearn.model_selection import PredefinedSplit, GridSearchCV
-from model.utils.pre_processing_elastic_net import train_validation_test_split, add_technical_indicators
+from model.utils.pre_processing_elastic_net import train_validation_test_split
+from model.utils.pre_processing_LSTM import add_technical_indicators
 
 
 def elastic_net_hyper_parameter_tuning(features, target, features_val, target_val):

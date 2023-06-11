@@ -13,7 +13,7 @@ import numpy as np
 from datetime import datetime, timedelta
 
 from keras.layers.core import Dense, Activation, Dropout
-from keras.layers import LSTM
+from keras.layers import LSTM, BatchNormalization
 from keras.models import Sequential
 from keras.optimizers import Adam, RMSprop
 
@@ -37,15 +37,19 @@ def create_lstm_model(num_features, dropout_rate=0.2, **kwargs):
     # Add 3 LSTM layers with the same number of units and activation function
     model.add(LSTM(units=kwargs['neurons'], activation=kwargs['activation'], return_sequences=True,
                    kernel_initializer=kwargs['initialization'], input_shape=(num_features, 1)))
+    model.add(BatchNormalization())
     model.add(Dropout(dropout_rate))
     model.add(LSTM(units=kwargs['neurons'], activation=kwargs['activation'], return_sequences=True,
                    kernel_initializer=kwargs['initialization']))
+    model.add(BatchNormalization())
     model.add(Dropout(dropout_rate))
     model.add(LSTM(units=kwargs['neurons'], activation=kwargs['activation'], return_sequences=True,
                    kernel_initializer=kwargs['initialization']))
+    model.add(BatchNormalization())
     model.add(Dropout(dropout_rate))
     model.add(LSTM(units=kwargs['neurons'], activation=kwargs['activation'], return_sequences=True,
                    kernel_initializer=kwargs['initialization']))
+    model.add(BatchNormalization())
     model.add(Dropout(dropout_rate))
     model.add(LSTM(units=kwargs['neurons'], activation=kwargs['activation']))
     # Add a dense output layer with a single output unit

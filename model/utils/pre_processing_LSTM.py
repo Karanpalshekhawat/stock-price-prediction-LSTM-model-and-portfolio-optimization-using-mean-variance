@@ -83,8 +83,8 @@ def add_technical_indicators(data):
     """
     sma_20 = ti.sma(data['Adj Close'].values, 20)
     sma_50 = ti.sma(data['Adj Close'].values, 50)
-    data['ma_20'] = [np.nan] * (len(data) - len(sma_20)) + list(sma_20)
-    data['ma_50'] = [np.nan] * (len(data) - len(sma_50)) + list(sma_50)
+    data['MA20'] = [np.nan] * (len(data) - len(sma_20)) + list(sma_20)
+    data['MA50'] = [np.nan] * (len(data) - len(sma_50)) + list(sma_50)
     rsi = ti.rsi(data['Adj Close'].values, period=14)
     data['RSI'] = [np.nan] * (len(data) - len(rsi)) + list(rsi)
     ma_cd, _, _ = ti.macd(data['Adj Close'].values, 12, 26, 9)
@@ -92,6 +92,7 @@ def add_technical_indicators(data):
     lower, _, upper = ti.bbands(data['Adj Close'].values, period=20, stddev=2)
     data['UpperBollingerBand'] = [np.nan] * (len(data) - len(upper)) + list(upper)
     data['LowerBollingerBand'] = [np.nan] * (len(data) - len(lower)) + list(lower)
+
     technical_indicator_features = ['MA20', 'MA50', 'RSI', 'MACD', 'UpperBollingerBand', 'LowerBollingerBand']
 
     return data, technical_indicator_features
