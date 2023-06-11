@@ -93,8 +93,10 @@ def run_elastic_net_model_for_all_stocks(data_dict, end_date):
     # running for all stocks
     model_details = collections.OrderedDict()
     for key, data in data_dict.items():
-        data = add_technical_indicators(data)
-        X_train_norm, Y_train, X_val_norm, Y_val, scaler = train_validation_test_split(data, **param)
+        data, technical_indicator_features = add_technical_indicators(data)
+        X_train_norm, Y_train, X_val_norm, Y_val, scaler = train_validation_test_split(data,
+                                                                                       technical_indicator_features,
+                                                                                       **param)
         best_hyper_parameter = elastic_net_hyper_parameter_tuning(X_train_norm, Y_train, X_val_norm, Y_val)
         final_model = elastic_model(key, X_train_norm, Y_train, best_hyper_parameter['alpha'],
                                     best_hyper_parameter['l1_ratio'])

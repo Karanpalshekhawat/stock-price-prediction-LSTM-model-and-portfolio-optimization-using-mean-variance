@@ -77,6 +77,10 @@ def add_technical_indicators(data):
         data (pd.DataFrame): stock price data from yahoo finance
 
     """
+    sma_20 = ti.sma(data['Adj Close'].values, 20)
+    sma_50 = ti.sma(data['Adj Close'].values, 50)
+    data['ma_20'] = [np.nan] * (len(data) - len(sma_20)) + list(sma_20)
+    data['ma_50'] = [np.nan] * (len(data) - len(sma_50)) + list(sma_50)
     rsi = ti.rsi(data['Adj Close'].values, period=14)
     data['RSI'] = [np.nan] * (len(data) - len(rsi)) + list(rsi)
     ma_cd, _, _ = ti.macd(data['Adj Close'].values, 12, 26, 9)
@@ -84,11 +88,12 @@ def add_technical_indicators(data):
     lower, _, upper = ti.bbands(data['Adj Close'].values, period=20, stddev=2)
     data['UpperBollingerBand'] = [np.nan] * (len(data) - len(upper)) + list(upper)
     data['LowerBollingerBand'] = [np.nan] * (len(data) - len(lower)) + list(lower)
+    technical_indicator_features = ['MA20', 'MA50', 'RSI', 'MACD', 'UpperBollingerBand', 'LowerBollingerBand']
 
-    return data
+    return data, technical_indicator_features
 
 
-def train_validation_test_split(df_hist, **kwargs):
+def train_validation_test_split(df_hist, technical_indicator_features, **kwargs):
     """
     Split data into training and validation test. Note that as
     the data is time series, so, split will not be random. Keep
@@ -97,6 +102,7 @@ def train_validation_test_split(df_hist, **kwargs):
 
     Args:
         df_hist (pd.DataFrame): historical complete data
+        technical_indicator_features (list): list of technical indicators features added
         **kwargs: training and validation test split
 
     Returns:
@@ -108,8 +114,6 @@ def train_validation_test_split(df_hist, **kwargs):
     dt_model = create_features_and_target_split(pd.DataFrame(df_hist['daily_returns']),
                                                 kwargs['past_day_returns_for_predicting'])
     dt_model = pd.merge(dt_model, df_hist, how="left", left_index=True, right_index=True)
-    technical_indicator_features = ['RSI', 'MACD', 'UpperBollingerBand', 'LowerBollingerBand']
-    # normalize and remove outliers
 
     return standardize_and_limit_outliers_returns(dt_model, kwargs['past_day_returns_for_predicting'],
                                                   technical_indicator_features, **kwargs)

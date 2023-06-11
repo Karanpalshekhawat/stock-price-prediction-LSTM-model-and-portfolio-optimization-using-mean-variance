@@ -161,8 +161,9 @@ def run_lstm_model_for_all_stocks(data_dict, end_date):
     hyper_params_dict = create_set_of_hyperparameter()
     model_details = collections.OrderedDict()
     for key, data in data_dict.items():
-        data = add_technical_indicators(data)
-        X_train, Y_train, X_val, Y_val, scaler = train_validation_test_split(data, **param)
+        data, technical_indicator_features = add_technical_indicators(data)
+        X_train, Y_train, X_val, Y_val, scaler = train_validation_test_split(data, technical_indicator_features,
+                                                                             **param)
         X_train, Y_train, X_val, Y_val = restructure_data(X_train, Y_train, X_val, Y_val)
         param_dict = tune_hyper_parameter(hyper_params_dict, X_train, Y_train, X_val, Y_val)
         # save the model
