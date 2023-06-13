@@ -16,8 +16,9 @@ from keras.layers.core import Dense, Activation, Dropout
 from keras.layers import LSTM, BatchNormalization
 from keras.models import Sequential
 from keras.optimizers import Adam, RMSprop
+from keras.callbacks import Callback
 
-from model.utils.pre_processing_LSTM import train_validation_test_split, add_technical_indicators
+from model.utils.pre_processing import train_validation_test_split, add_technical_indicators
 
 
 def create_lstm_model(num_features, dropout_rate=0.2, **kwargs):
@@ -145,6 +146,17 @@ def restructure_data(X_train, Y_train, X_val, Y_val):
     return X_train, Y_train, X_val, Y_val
 
 
+class EarlyStopCallback(Callback):
+    def __init__(self, threshold):
+        super(EarlyStopCallback, self).__init__()
+        self.threshold = threshold
+
+    def on_epoch_end(self, epoch, logs=None):
+        if logs['val_loss'] < self.threshold:
+            print(f"\n Validation loss ({round(logs['val_loss'], 4)}) is below threshold. Stopping training.")
+            self.model.stop_training = True
+
+
 def run_lstm_model_for_all_stocks(data_dict, end_date):
     """
     This method first reads all the stock tickers,
@@ -166,13 +178,17 @@ def run_lstm_model_for_all_stocks(data_dict, end_date):
     model_details = collections.OrderedDict()
     for key, data in data_dict.items():
         data, technical_indicator_features = add_technical_indicators(data)
-        X_train, Y_train, X_val, Y_val, scaler = train_validation_test_split(data, technical_indicator_features,
-                                                                             **param)
+        returns = False
+        X_train, Y_train, X_val, Y_val, scaler = train_validation_test_split(data, returns,
+                                                                             technical_indicator_features, **param)
         X_train, Y_train, X_val, Y_val = restructure_data(X_train, Y_train, X_val, Y_val)
         param_dict = tune_hyper_parameter(hyper_params_dict, X_train, Y_train, X_val, Y_val)
         # save the model
-        lstm_model = create_lstm_model(num_features=X_train.shape[1], **param_dict)
-        lstm_model.fit(X_train, Y_train, batch_size=param_dict['batch_size'], epochs=param_dict['epochs'], verbose=True)
+        lstm_model = create_lstm_model(num_features=X_train.shape[1], dropout_rate=0.3, **param_dict)
+        threshold = 2000
+        early_stop = EarlyStopCallback(threshold)
+        lstm_model.fit(X_train, Y_train, batch_size=param_dict['batch_size'], validation_data=(X_val, Y_val),
+                       callbacks=[early_stop], epochs=param_dict['epochs'], verbose=True)
         model_save_path = r"./model/output/LSTM/" + key + ".pkl"
         with open(model_save_path, 'wb') as f:
             pickle.dump(lstm_model, f)

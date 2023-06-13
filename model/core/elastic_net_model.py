@@ -11,14 +11,13 @@ import pandas as pd
 from datetime import datetime, timedelta
 from sklearn.linear_model import ElasticNet
 from sklearn.model_selection import PredefinedSplit, GridSearchCV
-from model.utils.pre_processing_elastic_net import train_validation_test_split
-from model.utils.pre_processing_LSTM import add_technical_indicators
+from model.utils.pre_processing import train_validation_test_split, add_technical_indicators
 
 
 def elastic_net_hyper_parameter_tuning(features, target, features_val, target_val):
     """
     build and fit the elastic net model and return
-    the best model hyper-parameter
+    the best model hyper parameter
 
     Args:
         features (pd.DataFrame) : lagged daily returns for a rolling window as feature
@@ -95,11 +94,11 @@ def run_elastic_net_model_for_all_stocks(data_dict, end_date):
     model_details = collections.OrderedDict()
     for key, data in data_dict.items():
         data, technical_indicator_features = add_technical_indicators(data)
-        X_train_norm, Y_train, X_val_norm, Y_val, scaler = train_validation_test_split(data,
-                                                                                       technical_indicator_features,
-                                                                                       **param)
-        best_hyper_parameter = elastic_net_hyper_parameter_tuning(X_train_norm, Y_train, X_val_norm, Y_val)
-        final_model = elastic_model(key, X_train_norm, Y_train, best_hyper_parameter['alpha'],
+        returns = True
+        X_train, Y_train, X_val, Y_val, scaler = train_validation_test_split(data, returns,
+                                                                             technical_indicator_features, **param)
+        best_hyper_parameter = elastic_net_hyper_parameter_tuning(X_train, Y_train, X_val, Y_val)
+        final_model = elastic_model(key, X_train, Y_train, best_hyper_parameter['alpha'],
                                     best_hyper_parameter['l1_ratio'])
         model_details[key] = {
             'model': final_model,
