@@ -6,12 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4da043ef-815b-4457-aa31-c4a6169e4a0f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/core/LSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/core/LSTM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/core/elastic_net_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/core/elastic_net_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/utils/pre_processing_LSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/utils/pre_processing_LSTM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/utils/pre_processing_elastic_net.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/utils/pre_processing_elastic_net.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/LSTM_model_accuracy-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/LSTM_model_accuracy-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/LSTM_model_accuracy.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/LSTM_model_accuracy.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/.ipynb_checkpoints/LSTM_model_accuracy-checkpoint.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/LSTM_model_accuracy.ipynb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -312,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686492364782</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="notebook updated with final hyperparameters">
+      <created>1686514656885</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1686514656885</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -327,7 +330,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="data transformation" />
     <MESSAGE value="train, validation and test split functionality added" />
     <MESSAGE value="limiting upper and lower range" />
     <MESSAGE value="final model saved" />
@@ -352,6 +354,7 @@
     <MESSAGE value="hyper parameters selection on lowest score on validation dataset added" />
     <MESSAGE value="Need to add more features" />
     <MESSAGE value="restructured code to add more features" />
-    <option name="LAST_COMMIT_MESSAGE" value="restructured code to add more features" />
+    <MESSAGE value="notebook updated with final hyperparameters" />
+    <option name="LAST_COMMIT_MESSAGE" value="notebook updated with final hyperparameters" />
   </component>
 </project>
