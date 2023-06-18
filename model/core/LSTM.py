@@ -153,7 +153,8 @@ class EarlyStopCallback(Callback):
 
     def on_epoch_end(self, epoch, logs=None):
         if logs['val_loss'] < self.threshold:
-            print(f"\n Validation loss ({round(logs['val_loss'], 4)}) is below threshold. Stopping training.")
+            print(
+                f"\n Validation loss ({round(logs['val_loss'], 4)}) is below threshold ({self.threshold}). Stopping training.")
             self.model.stop_training = True
 
 
