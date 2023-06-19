@@ -3,20 +3,10 @@
   stock: SBI
 - ticker: "RELIANCE.NS"
   stock: Reliance
-- ticker: "ITC.NS"
-  stock: ITC
 - ticker: "AXISBANK.NS"
   stock: AxisBank
 - ticker: "BHARTIARTL.NS"
   stock: BhartiAirtel
-- ticker: "M&M.NS"
-  stock: M&MLtd
-- ticker: "SUNPHARMA.NS"
-  stock: SunPharma
-- ticker: "NTPC.NS"
-  stock: NTPC
-- ticker: "JSWSTEEL.NS"
-  stock: JSWSteel
 - ticker: "TECHM.NS"
   stock: TechMahindra
 - ticker: "ONGC.NS"

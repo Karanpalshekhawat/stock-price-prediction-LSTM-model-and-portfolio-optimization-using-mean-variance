@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4da043ef-815b-4457-aa31-c4a6169e4a0f" name="Changes" comment="">
+    <list default="true" id="4da043ef-815b-4457-aa31-c4a6169e4a0f" name="Changes" comment="Tuned hyper parameters details added in a csv file">
+      <change afterPath="$PROJECT_DIR$/model/static_data/final_tuned_hyperparamater_details_LSTM.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/core/LSTM.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/core/LSTM.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/multi-step-forecasting/.ipynb_checkpoints/LSTM_model_accuracy_multi_step_forecasting-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/multi-step-forecasting/.ipynb_checkpoints/LSTM_model_accuracy_multi_step_forecasting-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/multi-step-forecasting/LSTM_model_accuracy_multi_step_forecasting.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/multi-step-forecasting/LSTM_model_accuracy_multi_step_forecasting.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/output/LSTM/SBI.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/model/output/LSTM/SBI.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/static_data/list_of_stocks.yml" beforeDir="false" afterPath="$PROJECT_DIR$/model/static_data/list_of_stocks.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/LSTM/.ipynb_checkpoints/LSTM_model_accuracy_for_one_stock-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/LSTM/.ipynb_checkpoints/LSTM_model_accuracy_for_one_stock-checkpoint.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/LSTM/LSTM_model_accuracy_for_one_stock.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/LSTM/LSTM_model_accuracy_for_one_stock.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notebooks/LSTM_model_accuracy.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/LSTM_model_accuracy.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -330,7 +333,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686687043313</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="Hyper-paramater tuning completed,aAll LSTM hyper-parameters tuned are added in the pkl format">
+      <created>1687125268465</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1687125268468</updated>
+    </task>
+    <task id="LOCAL-00042" summary="Restructured notebook files">
+      <created>1687126431206</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1687126431207</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -345,9 +362,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="final model saved" />
-    <MESSAGE value="name of stocks updated to remove blanks" />
-    <MESSAGE value="Approach used to save and read models changed" />
     <MESSAGE value="different approach for scaling and tranform feature vectors" />
     <MESSAGE value="restructure to save all models" />
     <MESSAGE value="Tried other things but no final conclusion yet" />
@@ -370,6 +384,9 @@
     <MESSAGE value="notebook updated with final hyperparameters" />
     <MESSAGE value="Multi-step forecasting notebook added" />
     <MESSAGE value="LSTM model restructured for early stopping using validation loss" />
-    <option name="LAST_COMMIT_MESSAGE" value="LSTM model restructured for early stopping using validation loss" />
+    <MESSAGE value="Hyper-paramater tuning completed,aAll LSTM hyper-parameters tuned are added in the pkl format" />
+    <MESSAGE value="Restructured notebook files" />
+    <MESSAGE value="Tuned hyper parameters details added in a csv file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Tuned hyper parameters details added in a csv file" />
   </component>
 </project>
