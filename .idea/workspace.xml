@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4da043ef-815b-4457-aa31-c4a6169e4a0f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/model/utils/forecasting_methods.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/model/utils/plots.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/utils/forecasting_methods.py" beforeDir="false" afterPath="$PROJECT_DIR$/model/utils/forecasting_methods.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notebooks/LSTM/.ipynb_checkpoints/LSTM_model_accuracy_for_one_stock-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/LSTM/.ipynb_checkpoints/LSTM_model_accuracy_for_one_stock-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notebooks/LSTM/LSTM_model_accuracy_for_one_stock.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/LSTM/LSTM_model_accuracy_for_one_stock.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notebooks/LSTM_model_accuracy.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/LSTM_model_accuracy.ipynb" afterDir="false" />
@@ -352,7 +353,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687187906819</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="forecasting methods added to be used in jupyter notebooks">
+      <created>1687214143346</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1687214143346</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -367,7 +375,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="restructure to save all models" />
     <MESSAGE value="Tried other things but no final conclusion yet" />
     <MESSAGE value="technical indicators added" />
     <MESSAGE value="restructured to create model run data" />
@@ -392,6 +399,7 @@
     <MESSAGE value="Restructured notebook files" />
     <MESSAGE value="Tuned hyper parameters details added in a csv file" />
     <MESSAGE value="Main notebook added for plotting the model accuracy" />
-    <option name="LAST_COMMIT_MESSAGE" value="Main notebook added for plotting the model accuracy" />
+    <MESSAGE value="forecasting methods added to be used in jupyter notebooks" />
+    <option name="LAST_COMMIT_MESSAGE" value="forecasting methods added to be used in jupyter notebooks" />
   </component>
 </project>

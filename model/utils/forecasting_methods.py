@@ -81,6 +81,37 @@ def pre_processing(df_hist, rol_freq):
     return dt_model, technical_indicator_features
 
 
+def benchmark_indexed(df):
+    """
+    This method is used to nicely compare the actual trend
+    with the predicted trend to be benchmarked as evolution of
+    INR 100.
+
+    Args:
+        df(pd.DataFrame): predicted value, actual value and features dataframe
+
+    Returns:
+        pd.DataFrame
+    """
+    df['Actual'] = ""
+    df['Predicted'] = ""
+    df.iloc[1, df.columns.get_loc('Actual')] = 100
+    df.iloc[1, df.columns.get_loc('Predicted')] = 100
+
+    for i in range(2, len(df)):
+        start = df.iloc[i - 1, df.columns.get_loc('Predicted_close')]
+        end = df.iloc[i, df.columns.get_loc('Predicted_close')]
+        predicted_return = (end / start) - 1
+        df.iloc[i, df.columns.get_loc('predicted_returns')] = predicted_return
+        df.iloc[i, df.columns.get_loc('Predicted')] = (1 + predicted_return) * df.iloc[
+            i - 1, df.columns.get_loc('Predicted')]
+        # actual trend
+        actual_return = df.iloc[i, df.columns.get_loc('actual_returns')]
+        df.iloc[i, df.columns.get_loc('Actual')] = (1 + actual_return) * df.iloc[i - 1, df.columns.get_loc('Actual')]
+
+    return df
+
+
 def forecast_one_day(df, rol_freq, model, scaler, technical_indicator_features):
     """
     This method restructures input data to predict next day price.
@@ -89,7 +120,7 @@ def forecast_one_day(df, rol_freq, model, scaler, technical_indicator_features):
 
     Args:
         df: features in dataframe
-        rol_freq (int): number of past days used as features in training the model
+        rol_freq (int): number of past days used as features in training
         model: Trained model
         scaler: Trained scaler which is used to normalize the features
         technical_indicator_features (list): list of technical features used in model training
@@ -98,6 +129,9 @@ def forecast_one_day(df, rol_freq, model, scaler, technical_indicator_features):
         df
     """
     df['Predicted_close'] = ""
+    df['actual_returns'] = df['Adj Close'].pct_change()
+    df = df.dropna()
+    df['predicted_returns'] = ""
     for i in range(0, len(df) - 1):
         features_ls = np.concatenate((df.iloc[i, :rol_freq].values, df.iloc[i][technical_indicator_features].values))
         features_ls = features_ls.reshape(-1, 1)
@@ -108,12 +142,14 @@ def forecast_one_day(df, rol_freq, model, scaler, technical_indicator_features):
         # current features are predicting next day return
         df.iloc[i + 1, df.columns.get_loc('Predicted_close')] = predicted_value
 
+    df = benchmark_indexed(df)
+
     return df
 
 
-def multistep_forecasting(df_multi_step, rol_freq, model, scaler, technical_indicator_features, num_days):
+def multistep_forecasting(df_multi_step, rol_freq, model, scaler, num_days):
     """
-    This method performs multi-step forecasting i.e. it restructures input data
+    This method performs multi step forecasting i.e. it restructures input data
     to predict next day price and then uses predicted price as inputs to predict
     the further day stock price and so on. Only argument  extra to this method is
     num_days which is the number of days in future you want to predict.
@@ -140,4 +176,4 @@ def multistep_forecasting(df_multi_step, rol_freq, model, scaler, technical_indi
         date = date.replace(hour=0, minute=0, second=0, microsecond=0)
         df_multi_step.loc[next_working_date, 'Predicted Adj Close'] = predicted_value
 
-    return df_multi_step
+    return df_multi_step, predicted_dates[0]
