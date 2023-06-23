@@ -9,8 +9,6 @@
   stock: BhartiAirtel
 - ticker: "TECHM.NS"
   stock: TechMahindra
-- ticker: "ONGC.NS"
-  stock: ONGC
 - ticker: "EICHERMOT.NS"
   stock: EicherMotors
 - ticker: "TCS.NS"
