@@ -1,11 +1,11 @@
-Stock,SBI,Reliance,Airtel,ONGC,TechMahindra,HUL,TCS,AsianPaints,EicherMotors,AxisBank
-Activation,Relu,Relu,Relu,Relu,Relu,Relu,Relu,Relu,Relu,Relu
-Number of Neurons in each layer,300,300,300,500,400,300,400,400,400,400
-Initialization,Uniform,Uniform,Uniform,Uniform,Uniform,Uniform,Uniform,Uniform,Uniform,Uniform
-Optimizer Algorithm,RMSprop,RMSprop,RMSprop,Adam,Adam,Adam,RMSprop,Adam,Adam,Adam
-Batch Size,256,256,256,256,256,256,256,256,256,256
-Learning Rate,0.0001,0.0001,0.0001,0.00001,0.0001,0.00001,0.00001,0.00001,0.00001,0.00001
-Epochs,100,100,100,200,200,200,300,300,300,300
-Validation loss Threshold to Stop Training,2000,20000,2000,100,7000,2000,5000,10000,10000,1000
-Dropout Rate,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3
-Validation Period start date from 30-May-2023,3 years back,3 years back,3 years back,2 years back,3 years back,3 years back,2 years back,2 years back,2 years back,3 years back
+,SBI,Reliance,Airtel,TechMahindra,HUL,TCS,AsianPaints,EicherMotors,AxisBank
+Activation,Relu,Relu,Relu,Relu,Relu,Relu,Relu,Relu,Relu
+Number of Neurons in each layer,300,400,300,400,300,400,400,400,300
+Initialization,Uniform,Uniform,Uniform,Uniform,Uniform,Uniform,Uniform,Uniform,Uniform
+Optimizer Algorithm,RMSprop,RMSprop,RMSprop,RMSprop,Adam,RMSprop,RMSprop,Adam,RMSprop
+Batch Size,256,256,256,256,256,256,256,256,256
+Learning Rate,0.0001,0.00001,0.0001,0.00001,0.00001,0.00001,0.00001,0.00001,0.00001
+Epochs,100,100,100,200,200,300,300,300,300
+Validation loss Threshold to Stop Training,2000,20000,2000,10000,2000,10000,10000,10000,500
+Dropout Rate,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3,0.3
+Validation Period start date from 30-May-2023,3 years back,3 years back,3 years back,2 years back,3 years back,2 years back,2 years back,2 years back,3 years back
