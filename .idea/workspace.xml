@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4da043ef-815b-4457-aa31-c4a6169e4a0f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/LSTM/AsianPaints.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/model/output/LSTM/AsianPaints.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/LSTM/AxisBank.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/model/output/LSTM/AxisBank.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/LSTM/TCS.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/model/output/LSTM/TCS.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/LSTM/scaler/AsianPaints.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/model/output/LSTM/scaler/AsianPaints.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/LSTM/scaler/AxisBank.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/model/output/LSTM/scaler/AxisBank.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/LSTM/scaler/TCS.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/model/output/LSTM/scaler/TCS.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/LSTM/.ipynb_checkpoints/LSTM_model_accuracy_for_one_stock-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/LSTM/.ipynb_checkpoints/LSTM_model_accuracy_for_one_stock-checkpoint.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/LSTM/LSTM_model_accuracy_for_one_stock.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/LSTM/LSTM_model_accuracy_for_one_stock.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notebooks/LSTM_model_accuracy.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/LSTM_model_accuracy.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -385,7 +377,21 @@
       <option name="project" value="LOCAL" />
       <updated>1687486900119</updated>
     </task>
-    <option name="localTasksCounter" value="48" />
+    <task id="LOCAL-00048" summary="notebook updated">
+      <created>1687699022737</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1687699022739</updated>
+    </task>
+    <task id="LOCAL-00049" summary="files deleted">
+      <created>1687699339709</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1687699339718</updated>
+    </task>
+    <option name="localTasksCounter" value="50" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -400,10 +406,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updated notebook to compare prediction on a test dataset" />
     <MESSAGE value="averaging the in between data from yfinance" />
     <MESSAGE value="hyper parameter tuning completed" />
-    <MESSAGE value="notebook updated" />
     <MESSAGE value="LSTM base model information added" />
     <MESSAGE value="lstm model fit added" />
     <MESSAGE value="LSTM model saved" />
@@ -425,6 +429,8 @@
     <MESSAGE value="methods added within repository for plotting performance within the notebook" />
     <MESSAGE value="notebook updatd with all stocks chart" />
     <MESSAGE value="new trained model for couple of stocks" />
-    <option name="LAST_COMMIT_MESSAGE" value="new trained model for couple of stocks" />
+    <MESSAGE value="notebook updated" />
+    <MESSAGE value="files deleted" />
+    <option name="LAST_COMMIT_MESSAGE" value="files deleted" />
   </component>
 </project>
