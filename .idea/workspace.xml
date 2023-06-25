@@ -6,11 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="4da043ef-815b-4457-aa31-c4a6169e4a0f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/LSTM/Reliance.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/model/output/LSTM/Reliance.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/LSTM/TechMahindra.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/model/output/LSTM/TechMahindra.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/LSTM/scaler/Reliance.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/model/output/LSTM/scaler/Reliance.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/output/LSTM/scaler/TechMahindra.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/model/output/LSTM/scaler/TechMahindra.pkl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/model/static_data/list_of_stocks.yml" beforeDir="false" afterPath="$PROJECT_DIR$/model/static_data/list_of_stocks.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/output/LSTM/AsianPaints.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/model/output/LSTM/AsianPaints.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/output/LSTM/AxisBank.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/model/output/LSTM/AxisBank.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/output/LSTM/TCS.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/model/output/LSTM/TCS.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/output/LSTM/scaler/AsianPaints.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/model/output/LSTM/scaler/AsianPaints.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/output/LSTM/scaler/AxisBank.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/model/output/LSTM/scaler/AxisBank.pkl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/model/output/LSTM/scaler/TCS.pkl" beforeDir="false" afterPath="$PROJECT_DIR$/model/output/LSTM/scaler/TCS.pkl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notebooks/LSTM/.ipynb_checkpoints/LSTM_model_accuracy_for_one_stock-checkpoint.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/LSTM/.ipynb_checkpoints/LSTM_model_accuracy_for_one_stock-checkpoint.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notebooks/LSTM/LSTM_model_accuracy_for_one_stock.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/LSTM/LSTM_model_accuracy_for_one_stock.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notebooks/LSTM_model_accuracy.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/notebooks/LSTM_model_accuracy.ipynb" afterDir="false" />
@@ -377,7 +378,14 @@
       <option name="project" value="LOCAL" />
       <updated>1687462926037</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="new trained model for couple of stocks">
+      <created>1687486900106</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1687486900119</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -392,7 +400,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="restructured to create model run data" />
     <MESSAGE value="Updated notebook to compare prediction on a test dataset" />
     <MESSAGE value="averaging the in between data from yfinance" />
     <MESSAGE value="hyper parameter tuning completed" />
@@ -417,6 +424,7 @@
     <MESSAGE value="forecasting methods added to be used in jupyter notebooks" />
     <MESSAGE value="methods added within repository for plotting performance within the notebook" />
     <MESSAGE value="notebook updatd with all stocks chart" />
-    <option name="LAST_COMMIT_MESSAGE" value="notebook updatd with all stocks chart" />
+    <MESSAGE value="new trained model for couple of stocks" />
+    <option name="LAST_COMMIT_MESSAGE" value="new trained model for couple of stocks" />
   </component>
 </project>
