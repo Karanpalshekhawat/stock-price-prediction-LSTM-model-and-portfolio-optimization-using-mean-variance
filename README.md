@@ -88,6 +88,8 @@ Return for each stock in the mean-variance model is quantified as per the multi-
 
 ### Model Performance
 
+---
+
 Notebook `LSTM_model_accuracy.ipynb` present under `notebooks` directory demonstrates the performance of LSTM model for each stock. It contains below 2 charts for each stock based on prediction from the trained LSTM model.
 
 - `Daily Adjusted Prediction`: Predict next day stock price based on the updated new features by incorporating the effect of new day data due to each passing day in the features.
@@ -119,4 +121,3 @@ Pdf is saved under `literature` directory.
 - NumPy
 - MatplotLib
 
----

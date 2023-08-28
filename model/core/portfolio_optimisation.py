@@ -10,6 +10,8 @@ from scipy.optimize import minimize
 
 def minimize_variance_for_given_return(num_of_stocks, exp_return, covar_matrix):
     """
+    Using efficient frontier approach to minimize the portfolio variance by varying the
+    weights of the stocks in the portfolio keeping the return constant.
 
     Args:
         num_of_stocks (int): number of stocks used in the analysis.
@@ -20,6 +22,7 @@ def minimize_variance_for_given_return(num_of_stocks, exp_return, covar_matrix):
          np.array
     """
     weights = np.ones(num_of_stocks) / num_of_stocks  # Initialize equal weights
+    equal_weight_portfolio_return = np.dot(weights, exp_return)
 
     def portfolio_variance():
         """
@@ -40,7 +43,7 @@ def minimize_variance_for_given_return(num_of_stocks, exp_return, covar_matrix):
         This method adds the second constraint of expected
         return of a portfolio.
         """
-        return np.dot(weights, exp_return) - 1
+        return np.dot(weights, exp_return) - equal_weight_portfolio_return
 
     # Optimization using scipy
     cons = ({'type': 'eq', 'fun': weight_sum_constraint}, {'type': 'eq', 'fun': expected_portfolio_return_constraint})
