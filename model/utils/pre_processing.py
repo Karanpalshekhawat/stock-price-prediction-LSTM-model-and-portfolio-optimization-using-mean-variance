@@ -105,7 +105,7 @@ def train_validation_test_split(df_hist, returns, technical_indicator_features, 
 
     Args:
         df_hist (pd.DataFrame): historical complete data
-        returns (bool): filter to select either daily returns or closing price of the historial data as a feature
+        returns (bool): filter to select either daily returns or closing price of the historical data as a feature
         technical_indicator_features (list): list of technical indicators features added
         **kwargs: training and validation test split
 

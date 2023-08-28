@@ -59,7 +59,7 @@ long_description = read_utf8('README.md')
 short_description = """An approach to build an quantitative alpha trading model to identify best performing stocks 
 and their corresponding ideal weights  using different machine learning models and compare performance on an actual 
 period"""
-url = 'https://github.com/Karanpalshekhawat/stock-predicition-and-portoflio-optimization-using-ML'
+url = 'https://github.com/Karanpalshekhawat/stock-price-prediction-LSTM-model-and-portfolio-optimization-using-mean-variance'
 
 setup(
     name='stock-prediction-using-ML',

@@ -17,7 +17,7 @@ from model.utils.pre_processing import train_validation_test_split, add_technica
 def elastic_net_hyper_parameter_tuning(features, target, features_val, target_val):
     """
     build and fit the elastic net model and return
-    the best model hyper parameter
+    the best model hyper-parameter
 
     Args:
         features (pd.DataFrame) : lagged daily returns for a rolling window as feature
@@ -32,7 +32,7 @@ def elastic_net_hyper_parameter_tuning(features, target, features_val, target_va
     # confusingly, alpha parameter in theory is set by l1 ratio in ElasticNet library
     # and lambda by alpha that controls sum of both penalties
     param_grid = {
-        'alpha': np.logspace(-5, 2, 8),
+        'alpha': np.logspace(-5, 2, 8),  # strength of regularization
         'l1_ratio': [.1, .2, .3, .4, .5, .6, .7, .8, .9]
     }
     # keeping the same holdout validation set for tuning

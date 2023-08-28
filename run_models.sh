@@ -1,1 +1,1 @@
-python -m model.run_bs_nn -h 50000 -t 100000
+python -m model.run_model
