@@ -95,8 +95,8 @@ Notebook `LSTM_model_accuracy.ipynb` present under `notebooks` directory demonst
 
 As an example, please find the performance plot for Reliance Industries stock price. All other stocks performance are present in the notebook. 
 
-![alt text](/Users/karanpalsinghshekhawat/Documents/Github_projects/alpha-model-using-ML/stock-price-prediction-LSTM-model-and-portfolio-optimization-using-mean-variance/model/output/LSTM/img1.png)
-![alt text](/Users/karanpalsinghshekhawat/Documents/Github_projects/alpha-model-using-ML/stock-price-prediction-LSTM-model-and-portfolio-optimization-using-mean-variance/model/output/LSTM/img2.png)
+![alt text](https://github.com/Karanpalshekhawat/stock-price-prediction-LSTM-model-and-portfolio-optimization-using-mean-variance/blob/main/model/output/LSTM/img1.png)
+![alt text](https://github.com/Karanpalshekhawat/stock-price-prediction-LSTM-model-and-portfolio-optimization-using-mean-variance/blob/main/model/output/LSTM/img2.png)
 
 ### Documentation
 
